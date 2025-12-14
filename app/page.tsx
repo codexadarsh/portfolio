@@ -37,7 +37,7 @@ const Home = () => {
         </div>
         <div>
           <Image
-            src={"/projects/project-01/cover-02.jpg"}
+            src={"/projects/project-01/cover-02.png"}
             alt="logo"
             width={1200}
             height={400}
