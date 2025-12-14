@@ -129,11 +129,11 @@ const DATA = {
         url: "https://twitter.com/codexadarsh",
         icon: Icons.x,
       },
-      email: {
-        name: "Send Email",
-        url: "mailto:mauryaadarsh793@gmail.com",
-        icon: Icons.email,
-      },
+      // email: {
+      //   name: "Send Email",
+      //   url: "mailto:mauryaadarsh793@gmail.com",
+      //   icon: Icons.email,
+      // },
       theme: {
         name: "Toggle Theme",
         url: "#",
@@ -146,8 +146,7 @@ const DATA = {
 export function Header() {
   return (
     <div className="flex flex-row items-center justify-center">
-      <div>Asia/Kolkata</div>
-
+      <p className="hidden md:block">Asia/Kolkata</p>
       <TooltipProvider>
         <Dock direction="middle">
           {DATA.navbar.map((item) => (
@@ -171,7 +170,7 @@ export function Header() {
               </Tooltip>
             </DockIcon>
           ))}
-          <Separator orientation="vertical" className="h-full" />
+          {/* <Separator orientation="vertical" className="h-full" /> */}
           {Object.entries(DATA.contact.social).map(([name, social]) => (
             <DockIcon key={name}>
               <Tooltip>
@@ -195,7 +194,9 @@ export function Header() {
           ))}
         </Dock>
       </TooltipProvider>
-      <div>{<TimeDisplay timeZone="Asia/Kolkata" />}</div>
+      <p className="hidden md:block">
+        {<TimeDisplay timeZone="Asia/Kolkata" />}
+      </p>
     </div>
   );
 }

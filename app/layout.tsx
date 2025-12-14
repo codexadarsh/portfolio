@@ -26,17 +26,17 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className="dark">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased px-4`}
       >
-        {/* <div className="absolute inset-0 top-0 z[-1] min-h-screen ">
+        {/* <div className="absolute inset-0 top-0 -z-3">
           <LightRays
             raysOrigin="top-center"
-            raysColor="#3dadff"
-            raysSpeed={0.5}
+            raysColor="#6366f1"
+            raysSpeed={1}
             lightSpread={0.8}
-            rayLength={1.2}
+            rayLength={0.5}
             followMouse={true}
             mouseInfluence={0.1}
             noiseAmount={0.1}

@@ -20,11 +20,11 @@ const Home = () => {
             </Link>
           </Button>
         </div>
-        <div className="flex flex-col gap-2">
+        <div className="flex flex-col gap-3">
           <h1 className="text-6xl font-semibold">
             Building fast, clean and <br /> reliable web experiences
           </h1>
-          <p className="text-xl font-semibold px-12">
+          <p className="text-lg font-semibold px-12">
             I'm Adarsh, a full-stack MERN developer and Shopify/React intern at
             PulseX Media, building scalable systems and modern React apps. After
             hours, I ship my own projects and refine my craft.

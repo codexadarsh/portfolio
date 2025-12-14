@@ -1,14 +1,25 @@
-import React from 'react'
+import { ArrowUpRightIcon } from "lucide-react";
 
-const page = () => {
+import { Button } from "@/components/ui/button";
+import {
+  Empty,
+  EmptyContent,
+  EmptyDescription,
+  EmptyHeader,
+  EmptyMedia,
+  EmptyTitle,
+} from "@/components/ui/empty";
+
+export default function page() {
   return (
-    <section className="min-h-screen">
-      <h1 className="text-center font-semibold text-2xl mt-10">Blog</h1>
-      <p className="text-center mt-4">
-        Coming soon
-      </p>
-    </section>
+    <Empty className="min-h-200">
+      <EmptyHeader>
+        <EmptyMedia variant="icon">
+          <ArrowUpRightIcon />
+        </EmptyMedia>
+        <EmptyTitle>No Blog Here</EmptyTitle>
+        <EmptyDescription>Stay tuned. We are working on it</EmptyDescription>
+      </EmptyHeader>
+    </Empty>
   );
 }
-
-export default page
