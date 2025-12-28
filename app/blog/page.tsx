@@ -1,6 +1,4 @@
 import { ArrowUpRightIcon } from "lucide-react";
-
-import { Button } from "@/components/ui/button";
 import {
   Empty,
   EmptyContent,
@@ -12,7 +10,7 @@ import {
 
 export default function page() {
   return (
-    <Empty className="min-h-200">
+    <Empty className="min-h-screen">
       <EmptyHeader>
         <EmptyMedia variant="icon">
           <ArrowUpRightIcon />

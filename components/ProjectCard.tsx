@@ -1,7 +1,9 @@
+"use client";
 import Image from "next/image";
 import { Button } from "./ui/button";
 import Link from "next/link";
-import { ArrowDownRight, ArrowUpRight, Book, BookOpen } from "lucide-react";
+import { ArrowUpRight, BookOpen } from "lucide-react";
+import { useState } from "react";
 
 type CardProps = {
   image: string;
@@ -36,7 +38,6 @@ const cards: CardProps[] = [
     github: "https://github.com/codexadarsh",
     link: "https://devevent-beta.vercel.app/",
   },
-
   {
     image: "/projects/project-01/React.png",
     title: "Movie Discovery",
@@ -54,20 +55,20 @@ const cards: CardProps[] = [
     link: "https://reactportal.vercel.app/",
   },
   {
-    image: "/projects/project-01/OpenGPT.png",
-    title: "OpenGPT",
-    description:
-      "A free LLM hub allowing users to access multiple AI models in one interface. Built with a lightweight layout focused on speed, usability, and minimal distractions.",
-    github: "https://github.com/codexadarsh",
-    link: "https://opengpt-rosy.vercel.app/",
-  },
-  {
     image: "/projects/project-01/Home.png",
     title: "Django Blog App",
     description:
       "A full-stack blog application built with Django featuring authentication, post management, and a clean editorial layout.",
     github: "https://github.com/codexadarsh",
     link: "https://django-blog-app-kopn.onrender.com/",
+  },
+  {
+    image: "/projects/project-01/OpenGPT.png",
+    title: "OpenGPT",
+    description:
+      "A free LLM hub allowing users to access multiple AI models in one interface. Built with a lightweight layout focused on speed, usability, and minimal distractions.",
+    github: "https://github.com/codexadarsh",
+    link: "https://opengpt-rosy.vercel.app/",
   },
   {
     image: "/projects/project-01/showcase.png",
@@ -80,42 +81,57 @@ const cards: CardProps[] = [
 ];
 
 const ProjectCard = () => {
+  const [expanded, setExpanded] = useState<number | null>(null);
   return (
     <section className="max-w-4xl mx-auto mt-10">
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
-        {cards.map(({ image, title, description, github, link }, i) => (
-          <div
-            key={i}
-            className="border rounded-xl overflow-hidden hover:bg-accent transition group"
-          >
-            <Image
-              src={image}
-              alt={title}
-              width={1200}
-              height={800}
-              className="object-cover group-hover:scale-105 transition-all duration-300"
-            />
+        {cards.map((card, i) => {
+          const isOpen = expanded === i;
+          const desc = isOpen
+            ? card.description
+            : card.description.substring(0, 100) + "...";
 
-            <div className="p-3">
-              <h1 className="text-lg font-semibold">{title}</h1>
-              <p className="text-sm">{description}</p>
-              <div className="flex justify-between gap-2 mt-2">
-                <Button size="sm" variant={"link"} asChild>
-                  <Link href={github}>
-                    <BookOpen />
-                    source code
-                  </Link>
-                </Button>
-                <Button size="sm" variant={"link"} asChild>
-                  <Link href={link} className="">
-                    live preview
-                    <ArrowUpRight />
-                  </Link>
-                </Button>
+          return (
+            <div
+              key={i}
+              className="border rounded-xl overflow-hidden hover:bg-accent transition group"
+            >
+              <Image
+                src={card.image}
+                alt={card.title}
+                width={1200}
+                height={800}
+                className="object-cover group-hover:scale-105 transition-all duration-300"
+              />
+
+              <div className="px-3 py-4">
+                <h1 className="text-lg font-semibold">{card.title}</h1>
+                <p>{desc}</p>
+                <button
+                  onClick={() => setExpanded(isOpen ? null : i)}
+                  className="text-blue-400 mb-4 hover:text-blue-500"
+                >
+                  {isOpen ? "less" : "more"}
+                </button>
+
+                <div className="flex justify-between">
+                  <Button size="sm" variant="default" asChild>
+                    <Link href={card.github} target="_blank">
+                      <BookOpen />
+                      source code
+                    </Link>
+                  </Button>
+                  <Button size="sm" variant="outline" asChild>
+                    <Link href={card.link} target="_blank">
+                      live preview
+                      <ArrowUpRight />
+                    </Link>
+                  </Button>
+                </div>
               </div>
             </div>
-          </div>
-        ))}
+          );
+        })}
       </div>
     </section>
   );

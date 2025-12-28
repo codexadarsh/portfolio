@@ -9,7 +9,7 @@ export const person = {
 
 export const about = {
   intro: `
-Full-stack MERN developer with experience building scalable web applications using React, Next.js, Node.js, and MongoDB. Strong focus on clean architecture, modular component design, API performance, and optimized user experiences. Hands-on experience in Shopify theme development, custom sections, performance optimization, and component-driven UI engineering.
+Full-stack MERN developer with experience building scalable web applications using React, Next.js, Node.js, and MongoDB. Strong focus on clean architecture, modular component design, API performance, and optimized user experiences. Experienced in building responsive, component-driven UIs and performance-optimized frontend systems.
   `,
 
   work: [
@@ -18,10 +18,10 @@ Full-stack MERN developer with experience building scalable web applications usi
       role: "Shopify & React Web Developer Intern",
       timeframe: "July-2025 | Present",
       achievements: [
-        "Built custom Shopify sections and reusable React components.",
-        "Improved UI performance with lazy loading and memoization.",
-        "Implemented responsive, pixel-perfect themes across devices.",
-        "Optimized store load speeds and UX with modern frontend patterns.",
+        "Built reusable, component-driven user interfaces using React and Next.js.",
+        "Improved frontend performance with lazy loading, memoization, and code splitting.",
+        "Implemented responsive, pixel-perfect layouts across devices.",
+        "Collaborated with designers and backend developers to deliver scalable web features.",
       ],
     },
   ],
@@ -29,29 +29,9 @@ Full-stack MERN developer with experience building scalable web applications usi
   education: [
     {
       name: "University of Mumbai",
-      description: "Bachelor of Computer Science (BSc CS) — In Progress",
+      timeframe: "July-2023 | Present",
+      description: "Bachelor inp Computer Science",
     },
   ],
 
-  skills: [
-    {
-      title: "Frontend Development",
-      items: [
-        "React",
-        "Next.js",
-        "Tailwind CSS",
-        "JavaScript",
-        "TypeScript",
-        "Shopify Liquid",
-      ],
-    },
-    {
-      title: "Backend Development",
-      items: ["Node.js", "Express", "MongoDB", "Mongoose"],
-    },
-    {
-      title: "Tools",
-      items: ["Git", "GitHub", "Postman", "Figma", "Vercel", "Netlify"],
-    },
-  ],
 };
