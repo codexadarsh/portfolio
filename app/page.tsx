@@ -34,7 +34,7 @@ const Home = () => {
           <h1 className="text-2xl font-semibold"> Projects </h1>
           <hr className="py-2" />
           <div>
-            <ProjectCard />
+            <ProjectCard isHomePage={true} />
           </div>
         </section>
         <section className="my-8">

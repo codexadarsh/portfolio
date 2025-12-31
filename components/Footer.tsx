@@ -25,7 +25,7 @@ const Footer = () => {
     },
   };
   return (
-    <div className="flex justify-center items-center max-w-3xl mx-auto py-2 mb-20">
+    <div className="flex justify-center items-center max-w-3xl mx-auto mb-24">
       <div className="text-muted-foreground">
         <span>design and developed by </span>
         <Link href="https://x.com/codexadarsh" target="_blank">

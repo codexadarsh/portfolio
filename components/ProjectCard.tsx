@@ -4,6 +4,7 @@ import { Button } from "./ui/button";
 import Link from "next/link";
 import { ArrowUpRight, BookOpen } from "lucide-react";
 import { useState } from "react";
+import { redirect } from "next/navigation";
 
 type CardProps = {
   image: string;
@@ -80,12 +81,17 @@ const cards: CardProps[] = [
   },
 ];
 
-const ProjectCard = () => {
+
+
+const ProjectCard = ({ isHomePage }:{isHomePage:boolean} ) => {
   const [expanded, setExpanded] = useState<number | null>(null);
+
+  const displayedCards = isHomePage ? cards.slice(0, 4) : cards;
+
   return (
     <section className="max-w-4xl mx-auto">
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-        {cards.map((card, i) => {
+        {displayedCards.map((card, i) => {
           const isOpen = expanded === i;
           const desc = isOpen
             ? card.description
@@ -133,6 +139,19 @@ const ProjectCard = () => {
           );
         })}
       </div>
+
+      {/* View All / Show Less Button - Only on Home Page */}
+      {isHomePage && cards.length > 4 && (
+        <div className="flex justify-center mt-8">
+          <Button
+            variant="outline"
+            size="lg"
+            onClick={() => redirect("/project")}
+          >
+            {`View All Projects (${cards.length})`}
+          </Button>
+        </div>
+      )}
     </section>
   );
 };
