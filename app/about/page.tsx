@@ -12,9 +12,8 @@ export default function AboutPage() {
   return (
     <BlurFade>
       <div className="max-w-3xl mx-auto">
-        <hr />
         {/* HEADER */}
-        <div className="text-center mt-4">
+        <div className="text-center">
           <h1 className="text-3xl font-bold">{person.name}</h1>
           <p className=" text-md text-muted-foreground">{person.role}</p>
         </div>

@@ -1,13 +1,4 @@
 import Link from "next/link";
-import { cn } from "@/lib/utils";
-import { buttonVariants } from "@/components/ui/button";
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from "@/components/ui/tooltip";
-import { Dock, DockIcon } from "@/components/ui/dock";
 import { BsGithub, BsLinkedin } from "react-icons/bs";
 import { FaXTwitter } from "react-icons/fa6";
 
@@ -34,7 +25,7 @@ const Footer = () => {
     },
   };
   return (
-    <div className="flex justify-center items-center max-w-3xl mx-auto pb-20">
+    <div className="flex justify-center items-center max-w-3xl mx-auto py-2 mb-20">
       <div className="text-muted-foreground">
         <span>design and developed by </span>
         <Link href="https://x.com/codexadarsh" target="_blank">
