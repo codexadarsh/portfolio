@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { AnimatedShinyText } from "./ui/animated-shiny-text";
 import { cn } from "@/lib/utils";
 import { buttonVariants } from "@/components/ui/button";
 import {
@@ -35,42 +34,12 @@ const Footer = () => {
     },
   };
   return (
-    <div className="flex flex-col-reverse md:flex-row justify-center md:justify-between items-center py-4 max-w-4xl px-4 mx-auto">
-      <div>
-        <AnimatedShinyText>
-          design and developed by
-          <Link href="https://x.com/codexadarsh" target="_blank">
-            <span className="px-1 hover:underline">codexadarsh</span>
-          </Link>
-        </AnimatedShinyText>
-      </div>
-      <div>
-        <TooltipProvider>
-          <div className="flex">
-            {Object.entries(DATA.contact.social).map(([name, social]) => (
-              <DockIcon key={name}>
-                <Tooltip>
-                  <TooltipTrigger asChild>
-                    <Link
-                      target="_blank"
-                      href={social.url}
-                      aria-label={social.name}
-                      className={cn(
-                        buttonVariants({ variant: "ghost", size: "icon" }),
-                        "size-12 rounded-full"
-                      )}
-                    >
-                      <social.icon className="size-4" />
-                    </Link>
-                  </TooltipTrigger>
-                  <TooltipContent>
-                    <p>{name}</p>
-                  </TooltipContent>
-                </Tooltip>
-              </DockIcon>
-            ))}
-          </div>
-        </TooltipProvider>
+    <div className="flex justify-center items-center max-w-3xl mx-auto pb-20">
+      <div className="text-muted-foreground">
+        <span>design and developed by </span>
+        <Link href="https://x.com/codexadarsh" target="_blank">
+          <span className="underline">codexadarsh</span>
+        </Link>
       </div>
     </div>
   );

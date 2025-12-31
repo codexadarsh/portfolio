@@ -1,66 +1,64 @@
-import React from "react";
-
-// app/about/page.tsx
-
-import Image from "next/image";
+import { GitHubCalendar } from "react-github-calendar";
 import { about, person } from "@/lib/constants";
 import { BlurFade } from "@/components/ui/blur-fade";
+import Contact from "@/components/Contact";
 
 export const metadata = {
   title: "About | Adarsh Maurya",
-  description: "Full-Stack MERN Developer Portfolio",
+  description: "Full-Stack Developer Portfolio",
 };
 
 export default function AboutPage() {
   return (
     <BlurFade>
-      <div className="max-w-4xl mx-auto w-full px-6 md:px-14 py-20 ">
+      <div className="max-w-3xl mx-auto">
+        <hr />
         {/* HEADER */}
-        <div className="flex flex-col items-center gap-2 text-center">
-          <Image
-            src={person.avatar}
-            alt={person.name}
-            width={120}
-            height={120}
-            className="rounded-full border border-gray-700"
-          />
-
-          <h1 className="text-4xl font-bold">{person.name}</h1>
-          <p className=" text-lg">{person.role}</p>
-
-          <p className="">{person.location}</p>
+        <div className="text-center mt-4">
+          <h1 className="text-3xl font-bold">{person.name}</h1>
+          <p className=" text-md text-muted-foreground">{person.role}</p>
         </div>
-
         {/* INTRO */}
-        <section className="mt-14">
-          <h2 className="text-2xl font-semibold">About Me</h2>
-          <p className=" leading-relaxed whitespace-pre-line">{about.intro}</p>
+        <section className="my-6">
+          <hr />
+          <h2 className="text-2xl font-semibold">About </h2>
+          <hr className="py-2" />
+          <p className="">{about.intro}</p>
         </section>
-        <section></section>
-        {/* SKILLS */}
-        <section className="mt-14 mb-20">
-          <h2 className="text-2xl font-semibold mb-6">Tech Stack</h2>
 
+        {/* SKILLS */}
+        <section className="my-6">
+          <hr />
+          <h2 className="text-2xl font-semibold ">Stack</h2>
+          <hr className="py-2" />
           <div className="flex flex-col">
             <p>
               <a href="https://skillicons.dev">
-                <img src="https://skillicons.dev/icons?i=js,ts,react,nextjs,mongodb,express,nodejs,supabase,git,github,figma,postman,vscode,vercel,netlify,python,django" />
+                <img src="https://skillicons.dev/icons?i=js,ts,react,nextjs,mongodb,express,nodejs,supabase,git,github,figma,postman,vscode,vercel,netlify" />
               </a>
             </p>
           </div>
         </section>
-        {/* EXPERIENCE */}
-        <section className="mt-14">
-          <h2 className="text-2xl font-semibold mb-6">Work Experience</h2>
-          {about.work.map((job, i) => (
-            <div key={i} className="mb-8">
-              <div className="flex justify-between flex-wrap gap-2">
-                <h3 className="text-xl font-semibold">{job.company}</h3>
-                <span className="">{job.timeframe}</span>
-              </div>
-              <p className="text-blue-400 mt-1">{job.role}</p>
 
-              <ul className="list-disc list-inside mt-3  space-y-2">
+        {/* EXPERIENCE */}
+        <section className="my-6">
+          <hr />
+          <h2 className="text-2xl font-semibold ">Experience</h2>
+          <hr className="py-2" />
+          {about.work.map((job, i) => (
+            <div key={i}>
+              <div className="flex flex-col md:flex-row justify-between ">
+                <div className="flex flex-col">
+                  <h3 className="text-lg font-semibold">{job.company}</h3>
+                  <p className="text-muted-foreground">{job.role}</p>
+                </div>
+                <div className="flex flex-col md:items-end">
+                  <span className="text-muted-foreground">{job.timeframe}</span>
+                  <p className="text-muted-foreground">{job.location}</p>
+                </div>
+              </div>
+
+              <ul className="list-disc list-inside pt-4 space-y-2">
                 {job.achievements.map((a, idx) => (
                   <li key={idx}>{a}</li>
                 ))}
@@ -70,25 +68,36 @@ export default function AboutPage() {
         </section>
 
         {/* EDUCATION */}
-        <section className="mt-14">
-          <h2 className="text-2xl font-semibold mb-6">Education</h2>
+        <section className="my-6">
+          <hr />
+          <h2 className="text-2xl font-semibold ">Education</h2>
+          <hr className="py-2" />
           {about.education.map((edu, i) => (
-            <div key={i} className="mb-4">
-              <div className="flex justify-between">
-                <h3 className="text-xl font-semibold">{edu.name}</h3>
-                <p className="">{edu.timeframe}</p>
+            <div key={i}>
+              <div className="flex flex-col md:flex-row justify-between ">
+                <div className="flex flex-col">
+                  <h3 className="text-lg font-semibold">{edu.name}</h3>
+                  <p className="text-muted-foreground">{edu.description}</p>
+                </div>
+                <div className="flex flex-col md:items-end">
+                  <p className="text-muted-foreground">{edu.timeframe}</p>
+                  <p className="text-muted-foreground">{edu.location}</p>
+                </div>
               </div>
-              <p>{edu.description}</p>
             </div>
           ))}
         </section>
+
         {/* Contributions */}
-        <section className="mt-14">
+        <section className="my-6">
           <div>
-            <h3 className="text-2xl font-semibold mb-6">Contributions</h3>
-            <img src="./contributions.png" alt="contributions" />
+            <hr />
+            <h2 className="text-2xl font-semibold ">Contributions</h2>
+            <hr className="py-2" />
+            <GitHubCalendar username="codexadarsh" />
           </div>
         </section>
+        <Contact />
       </div>
     </BlurFade>
   );

@@ -67,7 +67,7 @@ const DATA = {
   navbar: [
     { href: "/", icon: HomeIcon, label: "Home" },
     { href: "/about", icon: CircleUserRound, label: "About" },
-    { href: "/work", icon: Grid2X2, label: "Work" },
+    { href: "/project", icon: Grid2X2, label: "Project" },
     { href: "/blog", icon: PencilIcon, label: "Blog" },
   ],
   contact: {
@@ -99,56 +99,58 @@ const DATA = {
 
 export function Header() {
   return (
-    <div className="flex flex-row items-center justify-center">
-      <p className="hidden md:block">Asia/Kolkata</p>
-      <TooltipProvider>
-        <Dock direction="middle">
-          {DATA.navbar.map((item) => (
-            <DockIcon key={item.label}>
-              <Tooltip>
-                <TooltipTrigger asChild>
-                  <Link
-                    href={item.href}
-                    aria-label={item.label}
-                    className={cn(
-                      buttonVariants({ variant: "ghost", size: "icon" }),
-                      "size-12 rounded-full"
-                    )}
-                  >
-                    <item.icon className="size-4" />
-                  </Link>
-                </TooltipTrigger>
-                <TooltipContent>
-                  <p>{item.label}</p>
-                </TooltipContent>
-              </Tooltip>
-            </DockIcon>
-          ))}
-          <Separator orientation="vertical" className="h-full" />
-          {Object.entries(DATA.contact.social).map(([name, social]) => (
-            <DockIcon key={name}>
-              <Tooltip>
-                <TooltipTrigger asChild>
-                  <Link
-                    href={social.url}
-                    aria-label={social.name}
-                    className={cn(
-                      buttonVariants({ variant: "ghost", size: "icon" }),
-                      "size-12 rounded-full"
-                    )}
-                  >
-                    <social.icon className="size-4" />
-                  </Link>
-                </TooltipTrigger>
-                <TooltipContent>
-                  <p>{name}</p>
-                </TooltipContent>
-              </Tooltip>
-            </DockIcon>
-          ))}
-        </Dock>
-      </TooltipProvider>
-      <p className="hidden md:block">
+    <div className="flex flex-row items-center justify-between max-w-3xl mx-auto mt-4">
+      <p className="hidden md:block text-muted-foreground">Asia/Kolkata</p>
+      <div className="fixed bottom-5 left-1/2 -translate-x-1/2 z-10">
+        <TooltipProvider>
+          <Dock direction="middle">
+            {DATA.navbar.map((item) => (
+              <DockIcon key={item.label}>
+                <Tooltip>
+                  <TooltipTrigger asChild>
+                    <Link
+                      href={item.href}
+                      aria-label={item.label}
+                      className={cn(
+                        buttonVariants({ variant: "ghost", size: "icon" }),
+                        "size-12 rounded-full"
+                      )}
+                    >
+                      <item.icon className="size-4" />
+                    </Link>
+                  </TooltipTrigger>
+                  <TooltipContent>
+                    <p>{item.label}</p>
+                  </TooltipContent>
+                </Tooltip>
+              </DockIcon>
+            ))}
+            <Separator orientation="vertical" className="h-full" />
+            {Object.entries(DATA.contact.social).map(([name, social]) => (
+              <DockIcon key={name}>
+                <Tooltip>
+                  <TooltipTrigger asChild>
+                    <Link
+                      href={social.url}
+                      aria-label={social.name}
+                      className={cn(
+                        buttonVariants({ variant: "ghost", size: "icon" }),
+                        "size-12 rounded-full"
+                      )}
+                    >
+                      <social.icon className="size-4" />
+                    </Link>
+                  </TooltipTrigger>
+                  <TooltipContent>
+                    <p>{name}</p>
+                  </TooltipContent>
+                </Tooltip>
+              </DockIcon>
+            ))}
+          </Dock>
+        </TooltipProvider>
+      </div>
+      <p className="hidden md:block text-muted-foreground">
         {<TimeDisplay timeZone="Asia/Kolkata" />}
       </p>
     </div>

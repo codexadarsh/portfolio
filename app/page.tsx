@@ -1,63 +1,54 @@
+import Contact from "@/components/Contact";
 import ProjectCard from "@/components/ProjectCard";
-import { AnimatedShinyText } from "@/components/ui/animated-shiny-text";
 import { BlurFade } from "@/components/ui/blur-fade";
-import { Button } from "@/components/ui/button";
-import { about } from "@/lib/constants";
 import Image from "next/image";
-import Link from "next/link";
 
 const Home = () => {
   return (
-    <BlurFade>
-      <section className="text-center flex flex-col max-w-4xl mx-auto mt-20 gap-4">
-        <div>
-          <Button className="rounded-full" variant="outline" asChild>
-            <Link href="/work">
-              <AnimatedShinyText>
-                <span className="font-bold"> 🎉 Movie discovery | </span>
-                featured project
-              </AnimatedShinyText>
-            </Link>
-          </Button>
+    <section className=" max-w-3xl mx-auto">
+      <hr />
+      <BlurFade>
+        <div className="grid grid-cols-1 md:grid-cols-3 mt-4">
+          <div className="flex flex-col col-span-2">
+            <h1 className="text-2xl font-semibold md:text-3xl">
+              Adarsh Maurya
+            </h1>
+            <p className="text-muted-foreground">
+              Hey! I'm Adarsh, a full-stack developer
+            </p>
+          </div>
+
+          <div className="flex justify-center md:justify-end">
+            <Image
+              src="/projects/me.png"
+              alt="Adarsh Maurya"
+              width={100}
+              height={100}
+              className="rounded-xl object-cover hidden md:block"
+              priority
+            />
+          </div>
         </div>
-        <div className="flex flex-col gap-3">
-          <h1 className="text-4xl font-semibold md:text-6xl px-2 md:px-12">
-            Building fast, clean and reliable web experiences
-          </h1>
-          <p className="px-2 md:px-20 md:text-lg">
-            I'm Adarsh, a full-stack MERN developer and Shopify/React intern at
-            PulseX Media, building scalable systems and modern React apps. After
-            hours, I ship my own projects and refine my craft.
-          </p>
-        </div>
-        <div>
-          <Button className="rounded-full m-4" asChild>
-            <Link href="/about">About- Adarsh Maurya</Link>
-          </Button>
-        </div>
-        <div>
-          <Image
-            src={"/projects/project-01/cover-02.png"}
-            alt="logo"
-            width={1200}
-            height={400}
-            className="mt-8 rounded-lg"
-          />
-        </div>
-        <div className="text-start flex flex-col gap-2 mt-10">
-          <h1 className="text-2xl font-semibold"> Recent Posts </h1>
-          <p>Nothing for now :)</p>
-        </div>
-        <div className="text-start flex flex-col gap-2 mt-10">
-          <h1 className="text-2xl font-semibold"> About Me </h1>
-          <p>{about.intro}</p>
-        </div>
-        <div className="text-start flex flex-col gap-2 mt-10">
-          <h1 className="text-2xl font-semibold"> Works </h1>
-          <ProjectCard />
-        </div>
-      </section>
-    </BlurFade>
+
+        <section className="my-8">
+          <hr />
+          <h1 className="text-2xl font-semibold"> Projects </h1>
+          <hr className="py-2" />
+          <div>
+            <ProjectCard />
+          </div>
+        </section>
+        <section className="my-8">
+          <hr />
+          <h1 className="text-2xl font-semibold">Blogs </h1>
+          <hr className="py-2" />
+          <p>nothing is here :)</p>
+        </section>
+        <section>
+          <Contact />
+        </section>
+      </BlurFade>
+    </section>
   );
 };
 

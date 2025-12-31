@@ -83,13 +83,13 @@ const cards: CardProps[] = [
 const ProjectCard = () => {
   const [expanded, setExpanded] = useState<number | null>(null);
   return (
-    <section className="max-w-4xl mx-auto mt-10">
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
+    <section className="max-w-4xl mx-auto">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         {cards.map((card, i) => {
           const isOpen = expanded === i;
           const desc = isOpen
             ? card.description
-            : card.description.substring(0, 100) + "...";
+            : card.description.substring(0, 80) + "...";
 
           return (
             <div
@@ -105,8 +105,8 @@ const ProjectCard = () => {
               />
 
               <div className="px-3 py-4">
-                <h1 className="text-lg font-semibold">{card.title}</h1>
-                <p>{desc}</p>
+                <h1 className="text-md font-semibold">{card.title}</h1>
+                <p className="text-sm">{desc}</p>
                 <button
                   onClick={() => setExpanded(isOpen ? null : i)}
                   className="text-blue-400 mb-4 hover:text-blue-500"
