@@ -45,7 +45,7 @@ export function BlogForm({
         toast.success("Blog created successfully", { duration: 2000 });
         console.log(data);
       }
-      if(type === "edit") {
+      if (type === "edit") {
         const { error } = await updateBlog({
           data: {
             id: (data as any).id,
@@ -54,11 +54,11 @@ export function BlogForm({
             author: form.author,
           },
         });
-        
+
         if (error) {
           toast.error(error, { duration: 2000 });
           return;
-        };
+        }
 
         toast.success("Blog updated successfully", { duration: 2000 });
         console.log(data);
@@ -92,25 +92,24 @@ export function BlogForm({
     }
   }, []);
 
-useEffect(() => {
-  if (data) {
-    setType("edit");
-    setContent(data.content);
-    setForm({
-      title: data.title,
-      author: data.author
-    })
-    if (quillRef.current && data.content) {
-      quillRef.current.clipboard.dangerouslyPasteHTML(data.content);
+  useEffect(() => {
+    if (data) {
+      setType("edit");
+      setContent(data.content);
+      setForm({
+        title: data.title,
+        author: data.author,
+      });
+      if (quillRef.current && data.content) {
+        quillRef.current.clipboard.dangerouslyPasteHTML(data.content);
+      }
     }
-  }
-}, [data]);
+  }, [data]);
 
   return (
-    <div className="space-y-4 max-w-screen-xl mx-auto py-10 border-x px-10">
-      <h1 className="text-xl border-b pb-5">
-        {" "}
-        {type === "new" ? "Create Blog" : "Update Blog"}{" "}
+    <div className="space-y-4 max-w-3xl mx-auto border p-4">
+      <h1 className="text-xl">
+        {type === "new" ? "Create Blog" : "Update Blog"}
       </h1>
       <Input
         type="text"
@@ -126,17 +125,14 @@ useEffect(() => {
         defaultValue={data?.author}
         onChange={handleChange}
       />
-      <div ref={editorRef} className="h-[60vh] border rounded" />
+      <div ref={editorRef} className="border rounded" />
       <div className="flex items-center justify-between gap-2 my-4">
         <Button asChild variant={"ghost"}>
           <Link className="flex items-center gap-2" href="/dashboard">
-            {" "}
-            <ArrowLeft /> Back to dashboard{" "}
+            <ArrowLeft /> Back to dashboard
           </Link>
         </Button>
-        <Button
-          onClick={handleSubmit}
-        >
+        <Button onClick={handleSubmit}>
           {type === "new"
             ? loader
               ? "Creating..."

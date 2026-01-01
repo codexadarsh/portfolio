@@ -25,11 +25,10 @@ const Footer = () => {
     },
   };
   return (
-    <div className="flex justify-center items-center max-w-3xl mx-auto mb-24">
+    <div className="flex justify-center items-center max-w-3xl mx-auto py-2 px-4 mb-24 md:border">
       <div className="text-muted-foreground">
-        <span>design and developed by </span>
         <Link href="https://x.com/codexadarsh" target="_blank">
-          <span className="underline">codexadarsh</span>
+          <span>design and developed by codexadarsh</span>
         </Link>
       </div>
     </div>

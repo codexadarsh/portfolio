@@ -11,27 +11,27 @@ export const metadata = {
 export default function AboutPage() {
   return (
     <BlurFade>
-      <div className="max-w-3xl mx-auto">
+      <div className="max-w-3xl mx-auto border">
         {/* HEADER */}
-        <div className="text-center">
+        <div className="text-center p-4">
           <h1 className="text-3xl font-bold">{person.name}</h1>
           <p className=" text-md text-muted-foreground">{person.role}</p>
         </div>
         {/* INTRO */}
-        <section className="my-6">
+        <section>
           <hr />
-          <h2 className="text-2xl font-semibold">About </h2>
-          <hr className="py-2" />
-          <p className="">{about.intro}</p>
+          <h2 className="text-2xl font-semibold px-4">About </h2>
+          <hr />
+          <p className="p-4">{about.intro}</p>
         </section>
 
         {/* SKILLS */}
-        <section className="my-6">
+        <section>
           <hr />
-          <h2 className="text-2xl font-semibold ">Stack</h2>
-          <hr className="py-2" />
+          <h2 className="text-2xl font-semibold px-4 ">Stack</h2>
+          <hr />
           <div className="flex flex-col">
-            <p>
+            <p className="p-4">
               <a href="https://skillicons.dev">
                 <img src="https://skillicons.dev/icons?i=js,ts,react,nextjs,mongodb,express,nodejs,supabase,git,github,figma,postman,vscode,vercel,netlify" />
               </a>
@@ -40,13 +40,13 @@ export default function AboutPage() {
         </section>
 
         {/* EXPERIENCE */}
-        <section className="my-6">
+        <section>
           <hr />
-          <h2 className="text-2xl font-semibold ">Experience</h2>
-          <hr className="py-2" />
+          <h2 className="text-2xl font-semibold px-4 ">Experience</h2>
+          <hr />
           {about.work.map((job, i) => (
-            <div key={i}>
-              <div className="flex flex-col md:flex-row justify-between ">
+            <div key={i} className="p-4">
+              <div className="flex flex-col md:flex-row justify-between">
                 <div className="flex flex-col">
                   <h3 className="text-lg font-semibold">{job.company}</h3>
                   <p className="text-muted-foreground">{job.role}</p>
@@ -67,12 +67,12 @@ export default function AboutPage() {
         </section>
 
         {/* EDUCATION */}
-        <section className="my-6">
+        <section>
           <hr />
-          <h2 className="text-2xl font-semibold ">Education</h2>
-          <hr className="py-2" />
+          <h2 className="text-2xl font-semibold px-4 ">Education</h2>
+          <hr />
           {about.education.map((edu, i) => (
-            <div key={i}>
+            <div key={i} className="p-4">
               <div className="flex flex-col md:flex-row justify-between ">
                 <div className="flex flex-col">
                   <h3 className="text-lg font-semibold">{edu.name}</h3>
@@ -88,12 +88,14 @@ export default function AboutPage() {
         </section>
 
         {/* Contributions */}
-        <section className="my-6">
+        <section>
           <div>
             <hr />
-            <h2 className="text-2xl font-semibold ">Contributions</h2>
-            <hr className="py-2" />
-            <GitHubCalendar username="codexadarsh" />
+            <h2 className="text-2xl font-semibold px-4 ">Contributions</h2>
+            <hr />
+            <div className="p-4">
+              <GitHubCalendar username="codexadarsh" />
+            </div>
           </div>
         </section>
         <Contact />

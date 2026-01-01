@@ -34,8 +34,8 @@ export function BlogPagination({
       ) : (
         <>
           {/* Timeline */}
-          <div className="relative min-h-[30vh] pl-6 border-l border-gray-200 dark:border-slate-800">
-            <div className="py-4 text-sm text-gray-500"></div>
+          <div className="p-4">
+            <div className="text-sm text-gray-500"></div>
 
             {paginatedRows.map((row: any) => {
               const date = new Date(row.createdAt * 1000);
@@ -46,29 +46,17 @@ export function BlogPagination({
               }).format(date);
 
               return (
-                <Link
-                  href={`/blog/${row.id}`}
-                  key={row.id}
-                  className="group relative block md:py-3 py-2"
-                >
-                  {/* Timeline dot */}
-                  <span className="absolute -left-[32px] top-6 h-4 w-4 rounded-full bg-white dark:bg-slate-900 border-2 border-chart-2" />
-
-                  <div className="flex flex-col">
-                    <span className="font-mono text-xs text-chart-2 tracking-wide">
-                      {format}
-                    </span>
-
-                    <h1 className="text-gray-700 dark:text-slate-200 md:text-lg text-md font-medium group-hover:text-chart-2 transition-colors">
-                      {row.title}
-                    </h1>
-
-                    <div className="flex items-center gap-2 text-sm text-gray-400 group-hover:text-chart-2 transition-all">
+                <Link href={`/blog/${row.id}`} key={row.id}>
+                  <div className="flex flex-col md:flex-row justify-between items-center">
+                    <div>
+                      <h1 className="md:text-lg text-md ">{row.title}</h1>
+                      <span className="font-mono text-sm text-muted-foreground">
+                        {format}
+                      </span>
+                    </div>
+                    <div className="flex items-center gap-2 text-sm text-muted-foreground">
                       <span>Read article</span>
-                      <ArrowRight
-                        size={14}
-                        className="opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all"
-                      />
+                      <ArrowRight size={14} />
                     </div>
                   </div>
                 </Link>

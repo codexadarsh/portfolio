@@ -100,8 +100,10 @@ const DATA = {
 export function Header() {
   return (
     <div>
-      <div className="flex items-center justify-between max-w-3xl mx-auto my-4">
-        <p className="hidden md:block text-muted-foreground">Asia/Kolkata</p>
+      <div className="flex items-center justify-between max-w-3xl mx-auto md:border">
+        <p className="hidden md:block text-muted-foreground py-2 px-4">
+          Asia/Kolkata
+        </p>
         <div className="fixed bottom-10 left-1/2 -translate-x-1/2 z-10">
           <TooltipProvider>
             <Dock direction="middle">
@@ -151,7 +153,7 @@ export function Header() {
             </Dock>
           </TooltipProvider>
         </div>
-        <p className="hidden md:block text-muted-foreground">
+        <p className="hidden md:block text-muted-foreground py-2 px-4">
           {<TimeDisplay timeZone="Asia/Kolkata" />}
         </p>
       </div>

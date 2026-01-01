@@ -1,5 +1,6 @@
+import { Button } from "@/components/ui/button";
 import { getDatabase } from "@/sqlite";
-import { ArrowRight, ChevronRight } from "lucide-react";
+import { ArrowRight, ChevronRight, Home } from "lucide-react";
 import Link from "next/link";
 
 export default async function BlogPage() {
@@ -10,27 +11,30 @@ export default async function BlogPage() {
   db.close();
 
   return (
-    <section className="max-w-screen-xl mx-auto py-10 px-5">
-      <div className="border-b pb-5 flex md:flex-row flex-col md:items-center md:justify-between">
+    <section className="max-w-3xl mx-auto min-h-screen border">
+      <div className="flex md:flex-row flex-col md:items-center md:justify-between p-4 gap-2">
         <div>
-          <h1 className={`text-3xl italic text-chart-2`}> Blogs </h1>
-          <h1 className="text-gray-500 text-sm font-mono mt-2">
-            {" "}
-            Find out what's going on with <span>Arch Events UAE</span> every
-            week!{" "}
+          <h1 className={`text-2xl font-semibold`}> Blogs </h1>
+          <h1 className="text-muted-foreground text-sm font-mono mt-2">
+            Writing about engineering, learning, and building things that
+            matter.
           </h1>
         </div>
-        <h1 className="text-md text-gray-500 md:block hidden"> Arch Events UAE </h1>
+        <Button asChild variant={"outline"}>
+          <Link href={"/"}>
+            <Home className="size-3" />
+            home
+          </Link>
+        </Button>
       </div>
-
-      <div>
+      <hr />
+      <div className="p-4 text-xl font-semibold text-center">
         {rows && rows.length === 0 ? (
           <div>
             <h1> No Blogs Found </h1>
           </div>
         ) : (
-          <div className="min-h-[30vh] ">
-            <div className="py-4 text-sm text-gray-500"></div>
+          <div className="">
             {rows.map((row: any) => {
               const date = new Date(row.createdAt * 1000);
               const format = new Intl.DateTimeFormat("en-US", {
@@ -41,17 +45,15 @@ export default async function BlogPage() {
               return (
                 <Link
                   href={`/blog/${row.id}`}
-                  className=" flex md:items-center md:flex-row flex-col-reverse md:gap-2"
+                  className=" flex md:items-center justify-between md:flex-row flex-col md:gap-2 p-4 hover:bg-accent"
                   key={row.id}
                 >
-                  <ArrowRight size={15} className="md:block hidden text-chart-2" />{" "}
-                  <span className="font-mono text-sm text-chart-2">
-                    {" "}
-                    {format}{" "}
-                  </span>{" "}
-                  <h1 className="hover:underline text-gray-600 flex items-center gap-1">
-                    {row.title}{" "}
+                  <h1 className="hover:underline flex items-center gap-1">
+                    {row.title}
                   </h1>
+                  <span className="font-mono text-sm text-muted-foreground">
+                    {row.author},{format}
+                  </span>
                 </Link>
               );
             })}

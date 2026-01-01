@@ -23,7 +23,7 @@ export default async function NewBlog({searchParams}: {
     data = rows[0];
   }
 
-  return <div className="fixed inset-0 bg-white w-screen min-h-screen">
+  return <div className="fixed inset-0 w-screen min-h-screen">
     <BlogForm data={ data ? sanitize(data): null} />
   </div>;
 }

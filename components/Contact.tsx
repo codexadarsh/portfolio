@@ -8,33 +8,11 @@ import { BsDiscord, BsGithub, BsLinkedin } from "react-icons/bs";
 
 const Contact = () => {
   return (
-    <div className="max-w-4xl mx-auto mt-14">
+    <div className="max-w-4xl mx-auto">
       <hr />
-      <h3 className="text-2xl font-semibold">Contact</h3>
-      <hr className="py-4" />
-      <div className="flex flex-col md:flex-row gap-3">
-        <Button asChild className="bg-black text-white">
-          <Link
-            href="https://x.com/codexadarsh"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-2"
-          >
-            <FaXTwitter />
-            <span>DM me on X</span>
-          </Link>
-        </Button>
-        <Button asChild className="bg-blue-500 hover:bg-blue-400 text-white">
-          <Link
-            href="https://x.com/codexadarsh"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-2"
-          >
-            <BsLinkedin />
-            <span>Connect me on Linkedin</span>
-          </Link>
-        </Button>
+      <h3 className="text-2xl font-semibold px-4">Contact</h3>
+      <hr />
+      <div className="flex flex-col md:flex-row justify-center p-4 gap-2">
         <Button asChild>
           <Link
             href="https://x.com/codexadarsh"
@@ -42,8 +20,30 @@ const Contact = () => {
             rel="noopener noreferrer"
             className="flex items-center gap-2"
           >
+            <FaXTwitter />
+            <span>X.com</span>
+          </Link>
+        </Button>
+        <Button asChild className="bg-blue-500 hover:bg-blue-400 text-white">
+          <Link
+            href="https://linkedin.com/codexadarsh"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-2"
+          >
+            <BsLinkedin />
+            <span>Linkedin</span>
+          </Link>
+        </Button>
+        <Button asChild variant={"secondary"}>
+          <Link
+            href="https://github.com/codexadarsh"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-2"
+          >
             <BsGithub />
-            <span>Follow me on Github</span>
+            <span>Github</span>
           </Link>
         </Button>
 
@@ -58,11 +58,12 @@ const Contact = () => {
             className="flex items-center gap-2"
           >
             <BsDiscord />
-            <span>Meet me on Discord</span>
+            <span>Discord</span>
           </Link>
         </Button>
       </div>
-      <div className="px-4 pb-4 rounded-xl mt-6">
+      <hr />
+      <div className="px-4 pb-4 rounded-xl">
         <h2 className="py-4 text-muted-foreground">
           You can also reach me via email
         </h2>
