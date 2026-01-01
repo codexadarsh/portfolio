@@ -81,11 +81,14 @@ const cards: CardProps[] = [
   },
 ];
 
+type ProjectCardProps = {
+  isHomePage?: boolean;
+};
 
-
-const ProjectCard = ({ isHomePage }:{isHomePage:boolean} ) => {
+const ProjectCard = ({ isHomePage = false }: ProjectCardProps) => {
   const [expanded, setExpanded] = useState<number | null>(null);
 
+  // Show 4 cards on home page, all cards on project page
   const displayedCards = isHomePage ? cards.slice(0, 4) : cards;
 
   return (
