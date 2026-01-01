@@ -4,3 +4,8 @@ import { twMerge } from "tailwind-merge"
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
 }
+
+export function sanitize(data: any) {
+  return JSON.parse(JSON.stringify(data));
+}
+  

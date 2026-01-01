@@ -1,9 +1,23 @@
+import { BlogPagination } from "@/components/blog-pagination";
 import Contact from "@/components/Contact";
 import ProjectCard from "@/components/ProjectCard";
 import { BlurFade } from "@/components/ui/blur-fade";
+import { getDatabase } from "@/sqlite";
 import Image from "next/image";
 
-const Home = () => {
+const Home = async () => {
+
+  let rows;
+
+  const db = await getDatabase();
+  try {
+    rows = await db.sql`SELECT * FROM blogs LIMIT 10`;
+  } catch (error) {
+    console.log(JSON.stringify(error))
+  } finally {
+    db.close();
+  }
+
   return (
     <section className=" max-w-3xl mx-auto">
       <BlurFade>
@@ -41,7 +55,7 @@ const Home = () => {
           <hr />
           <h1 className="text-2xl font-semibold">Blogs </h1>
           <hr className="py-2" />
-          <p>nothing is here :)</p>
+          <BlogPagination rows={JSON.parse(JSON.stringify(rows))} pageSize={5} />
         </section>
         <section>
           <Contact />
