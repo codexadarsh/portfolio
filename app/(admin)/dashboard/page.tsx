@@ -25,7 +25,7 @@ export default async function Dashboard() {
     <div className="fixed inset-0 w-screen min-h-screen">
       <div className="max-w-3xl mx-auto border">
         <div className="flex items-center justify-between p-4">
-          <h1 className="text-xl"> Arch Events - Blog Panel </h1>
+          <h1 className="text-xl"> Blog Panel </h1>
           <div className="space-x-2">
             <Button asChild>
               <Link href="/dashboard/new">Create Blog</Link>

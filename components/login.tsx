@@ -56,11 +56,9 @@ export function LoginForm() {
 
   return (
     <div className="">
-      <Card
-        className="w-screen max-w-sm"
-      >
+      <Card className="w-screen max-w-sm">
         <CardHeader>
-          <CardTitle>Arch Events</CardTitle>
+          <CardTitle>Admin</CardTitle>
           <CardDescription>
             Login to continue to blog dashboard.
           </CardDescription>
