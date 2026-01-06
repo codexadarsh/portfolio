@@ -145,12 +145,8 @@ const ProjectCard = ({ isHomePage = false }: ProjectCardProps) => {
 
       {/* View All / Show Less Button - Only on Home Page */}
       {isHomePage && cards.length > 4 && (
-        <div className="flex justify-center mt-8">
-          <Button
-            variant="outline"
-            size="lg"
-            onClick={() => redirect("/project")}
-          >
+        <div className="flex justify-center pt-4">
+          <Button variant="outline" onClick={() => redirect("/project")}>
             {`View All Projects (${cards.length})`}
           </Button>
         </div>

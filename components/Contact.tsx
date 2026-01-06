@@ -13,7 +13,7 @@ const Contact = () => {
       <h3 className="text-2xl font-semibold px-4">Contact</h3>
       <hr />
       <div className="flex flex-col md:flex-row justify-center p-4 gap-2">
-        <Button asChild>
+        <Button asChild variant={"outline"}>
           <Link
             href="https://x.com/codexadarsh"
             target="_blank"
@@ -24,9 +24,9 @@ const Contact = () => {
             <span>X.com</span>
           </Link>
         </Button>
-        <Button asChild className="bg-blue-500 hover:bg-blue-400 text-white">
+        <Button asChild variant={"outline"}>
           <Link
-            href="https://linkedin.com/codexadarsh"
+            href="https://linkedin.com/in/codexadarsh"
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-2"
@@ -35,7 +35,7 @@ const Contact = () => {
             <span>Linkedin</span>
           </Link>
         </Button>
-        <Button asChild variant={"secondary"}>
+        <Button asChild variant={"outline"}>
           <Link
             href="https://github.com/codexadarsh"
             target="_blank"
@@ -47,10 +47,7 @@ const Contact = () => {
           </Link>
         </Button>
 
-        <Button
-          asChild
-          className="bg-indigo-500 text-white hover:bg-indigo-400"
-        >
+        <Button asChild variant={"outline"}>
           <Link
             href="https://discord.com/users/codexadarsh"
             target="_blank"
