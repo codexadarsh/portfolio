@@ -31,7 +31,7 @@ const Home = async () => {
     <section className=" max-w-3xl mx-auto border">
       <BlurFade>
         <div className="">
-          <h1 className="text-2xl text-center text-muted-foreground hover:text-foreground font-semibold py-16">
+          <h1 className="text-2xl text-center text-muted-foreground hover:text-foreground font-semibold md:py-16 py-8">
             I don’t control privilege or luck. I control expertise.
           </h1>
           <hr />
