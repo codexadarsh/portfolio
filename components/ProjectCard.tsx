@@ -1,10 +1,11 @@
 "use client";
+
 import Image from "next/image";
-import { Button } from "./ui/button";
 import Link from "next/link";
+import { Button } from "./ui/button";
 import { ArrowUpRight, BookOpen } from "lucide-react";
 import { useState } from "react";
-import { redirect } from "next/navigation";
+import { useRouter } from "next/navigation";
 
 type CardProps = {
   image: string;
@@ -85,69 +86,77 @@ type ProjectCardProps = {
   isHomePage?: boolean;
 };
 
-const ProjectCard = ({ isHomePage = false }: ProjectCardProps) => {
-  const [expanded, setExpanded] = useState<number | null>(null);
+const truncate = (text: string, limit = 90) => {
+  if (text.length <= limit) return text;
+  const cut = text.lastIndexOf(" ", limit);
+  return (cut === -1 ? text.slice(0, limit) : text.slice(0, cut)) + "…";
+};
 
-  // Show 4 cards on home page, all cards on project page
+const ProjectCard = ({ isHomePage = false }: ProjectCardProps) => {
+  const [expanded, setExpanded] = useState<string | null>(null);
+  const router = useRouter();
+
   const displayedCards = isHomePage ? cards.slice(0, 4) : cards;
 
   return (
-    <section className="max-w-4xl mx-auto">
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-        {displayedCards.map((card, i) => {
-          const isOpen = expanded === i;
-          const desc = isOpen
-            ? card.description
-            : card.description.substring(0, 80) + "...";
+    <section className="mx-auto max-w-5xl">
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+        {displayedCards.map((card) => {
+          const isOpen = expanded === card.title;
 
           return (
-            <div
-              key={i}
-              className="border rounded-xl overflow-hidden hover:bg-accent transition group"
+            <article
+              key={card.title}
+              className="overflow-hidden rounded border bg-background transition hover:bg-accent"
             >
-              <Image
-                src={card.image}
-                alt={card.title}
-                width={1200}
-                height={800}
-                className="object-cover group-hover:scale-105 transition-all duration-300"
-              />
+              <div className="relative aspect-16/10 overflow-hidden">
+                <Image
+                  src={card.image}
+                  alt={card.title}
+                  fill
+                  className="object-cover transition-transform duration-300 hover:scale-105"
+                />
+              </div>
 
-              <div className="px-3 py-4">
-                <h1 className="text-md font-semibold">{card.title}</h1>
-                <p className="text-sm">{desc}</p>
+              <div className="space-y-1 p-4">
+                <h2 className="text-base font-semibold">{card.title}</h2>
+
+                <p className="text-sm text-muted-foreground">
+                  {isOpen ? card.description : truncate(card.description)}
+                </p>
+
                 <button
-                  onClick={() => setExpanded(isOpen ? null : i)}
-                  className="text-blue-400 mb-4 hover:text-blue-500"
+                  onClick={() => setExpanded(isOpen ? null : card.title)}
+                  className="text-sm font-medium text-blue-400 hover:text-blue-500"
                 >
-                  {isOpen ? "less" : "more"}
+                  {isOpen ? "Show less" : "Read more"}
                 </button>
 
-                <div className="flex justify-between">
-                  <Button size="sm" variant="default" asChild>
+                <div className="flex justify-between pt-2">
+                  <Button size="sm" variant="link" asChild>
                     <Link href={card.github} target="_blank">
-                      <BookOpen />
-                      source code
+                      <BookOpen className="mr-1 h-4 w-4" />
+                      Source
                     </Link>
                   </Button>
-                  <Button size="sm" variant="outline" asChild>
+
+                  <Button size="sm" variant="link" asChild>
                     <Link href={card.link} target="_blank">
-                      live preview
-                      <ArrowUpRight />
+                      Live
+                      <ArrowUpRight className="ml-1 h-4 w-4" />
                     </Link>
                   </Button>
                 </div>
               </div>
-            </div>
+            </article>
           );
         })}
       </div>
 
-      {/* View All / Show Less Button - Only on Home Page */}
       {isHomePage && cards.length > 4 && (
-        <div className="flex justify-center pt-4">
-          <Button variant="outline" onClick={() => redirect("/project")}>
-            {`View All Projects (${cards.length})`}
+        <div className="flex justify-center pt-6">
+          <Button variant="outline" onClick={() => router.push("/project")}>
+            View all projects ({cards.length})
           </Button>
         </div>
       )}
