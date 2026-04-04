@@ -1,37 +1,36 @@
 import Link from "next/link";
-import { BsGithub, BsLinkedin } from "react-icons/bs";
-import { FaXTwitter } from "react-icons/fa6";
 
 const Footer = () => {
-  const DATA = {
-    contact: {
-      social: {
-        GitHub: {
-          name: "GitHub",
-          url: "https://github.com/codexadarsh",
-          icon: BsGithub,
-        },
-        LinkedIn: {
-          name: "LinkedIn",
-          url: "https://linkedin.com/in/codexadarsh",
-          icon: BsLinkedin,
-        },
-        X: {
-          name: "X",
-          url: "https://twitter.com/codexadarsh",
-          icon: FaXTwitter,
-        },
-      },
-    },
-  };
   return (
-    <div className="flex justify-center items-center max-w-3xl mx-auto py-2 px-4 mb-24 md:border">
-      <div className="text-muted-foreground">
-        <Link href="https://x.com/codexadarsh" target="_blank">
-          <span>design and developed by codexadarsh</span>
-        </Link>
+    <footer className="max-w-3xl mx-auto p-2  border mb-20">
+      <div className="flex flex-col sm:flex-row items-center justify-center gap-2 text-sm text-muted-foreground">
+        {/* Left */}
+        <p className="font-mono text-center sm:text-left">
+          Built by{" "}
+          <Link
+            href="https://x.com/codexadarsh"
+            target="_blank"
+            className="hover:underline underline-offset-4"
+          >
+            codexadarsh
+          </Link>
+          .
+        </p>
+
+        {/* Right */}
+        <p className="font-mono text-center sm:text-right">
+          The source code is available on{" "}
+          <Link
+            href="https://github.com/codexadarsh"
+            target="_blank"
+            className="hover:underline underline-offset-4"
+          >
+            GitHub
+          </Link>
+          .
+        </p>
       </div>
-    </div>
+    </footer>
   );
 };
 

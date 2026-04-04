@@ -133,17 +133,17 @@ const ProjectCard = ({ isHomePage = false }: ProjectCardProps) => {
                 </button>
 
                 <div className="flex justify-between pt-2">
-                  <Button size="sm" variant="link" asChild>
+                  <Button size="sm" variant="ghost" asChild>
                     <Link href={card.github} target="_blank">
-                      <BookOpen className="mr-1 h-4 w-4" />
-                      Source
+                      <BookOpen className="size-3" />
+                      <span className="text-sm"> Source</span>
                     </Link>
                   </Button>
 
-                  <Button size="sm" variant="link" asChild>
+                  <Button size="sm" variant="ghost" asChild>
                     <Link href={card.link} target="_blank">
-                      Live
-                      <ArrowUpRight className="ml-1 h-4 w-4" />
+                      <span className="text-sm"> Live</span>
+                      <ArrowUpRight className="size-3" />
                     </Link>
                   </Button>
                 </div>
