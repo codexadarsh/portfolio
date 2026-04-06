@@ -7,7 +7,7 @@ export default function BaseLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="my-2">
+    <div className="m-2">
       <Header />
       {children}
       <Footer />

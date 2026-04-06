@@ -38,7 +38,7 @@ const Contact = () => {
       <hr />
       <h2 className="px-4 text-xl font-semibold">Connect</h2>
       <hr />
-      <div className="flex flex-col justify-center gap-2 p-4 md:flex-row">
+      <div className="flex flex-col items-start md:items-center justify-center gap-2 p-4 md:flex-row">
         {details.map(({ href, label, icon }) => (
           <Button asChild key={label} variant="ghost" size="sm">
             <Link

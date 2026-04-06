@@ -32,87 +32,84 @@ const Home = async () => {
   return (
     <section className="mx-auto max-w-3xl border-r border-l">
       <BlurFade>
-        <div className="flex flex-col gap-6 p-8">
-          {/* Header */}
-          <section className="flex flex-col items-center md:flex-row md:justify-between">
-            {/* Left */}
-            <div className="flex items-center gap-4">
-              <Tooltip>
-                <TooltipTrigger asChild>
-                  <div>
-                    <Logo className="size-10" />
-                  </div>
-                </TooltipTrigger>
-                <TooltipContent side="right">
-                  <p>Logo</p>
-                </TooltipContent>
-              </Tooltip>
+        <div className="flex flex-col md:flex-row justify-between gap-6 p-4 md:p-8">
+          <div className="flex items-center gap-4">
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <div>
+                  <Logo className="size-10" />
+                </div>
+              </TooltipTrigger>
+              <TooltipContent side="right">
+                <p>Logo</p>
+              </TooltipContent>
+            </Tooltip>
 
-              <div className="flex flex-col">
-                <h1 className="text-xl font-semibold">Adarsh Maurya</h1>
-                <TextFlip className="text-muted-foreground text-sm font-medium">
-                  <span>Student</span>
-                  <span>Developer</span>
-                  <span>Builder</span>
-                </TextFlip>
-              </div>
+            <div className="flex flex-col">
+              <h1 className="text-xl font-semibold">Adarsh Maurya</h1>
+              <TextFlip className="text-muted-foreground text-sm font-medium">
+                <span>Student</span>
+                <span>Developer</span>
+                <span>Builder</span>
+              </TextFlip>
             </div>
+          </div>
 
-            {/* Socials */}
-            <TooltipProvider delayDuration={80}>
-              <div className="flex items-center gap-2">
-                {[
-                  {
-                    href: "https://x.com/codexadarsh",
-                    label: "X",
-                    icon: <FaXTwitter className="h-4 w-4" />,
-                  },
-                  {
-                    href: "https://linkedin.com/in/codexadarsh",
-                    label: "LinkedIn",
-                    icon: <BsLinkedin className="h-4 w-4" />,
-                  },
-                  {
-                    href: "https://github.com/codexadarsh",
-                    label: "GitHub",
-                    icon: <BsGithub className="h-4 w-4" />,
-                  },
-                  {
-                    href: "https://discord.com/users/codexadarsh",
-                    label: "Discord",
-                    icon: <BsDiscord className="h-4 w-4" />,
-                  },
-                ].map(({ href, label, icon }) => (
-                  <Tooltip key={label}>
-                    <TooltipTrigger asChild>
-                      <Button
-                        asChild
-                        size="icon"
-                        variant="ghost"
-                        aria-label={label}
-                        className="hover:bg-muted rounded-full transition"
-                      >
-                        <Link href={href} target="_blank">
-                          {icon}
-                        </Link>
-                      </Button>
-                    </TooltipTrigger>
-                    <TooltipContent>
-                      <p>{label}</p>
-                    </TooltipContent>
-                  </Tooltip>
-                ))}
-              </div>
-            </TooltipProvider>
-          </section>
+          {/* Socials */}
+          <TooltipProvider delayDuration={80}>
+            <div className="flex items-center gap-2">
+              {[
+                {
+                  href: "https://x.com/codexadarsh",
+                  label: "X",
+                  icon: <FaXTwitter className="h-4 w-4" />,
+                },
+                {
+                  href: "https://linkedin.com/in/codexadarsh",
+                  label: "LinkedIn",
+                  icon: <BsLinkedin className="h-4 w-4" />,
+                },
+                {
+                  href: "https://github.com/codexadarsh",
+                  label: "GitHub",
+                  icon: <BsGithub className="h-4 w-4" />,
+                },
+                {
+                  href: "https://discord.com/users/codexadarsh",
+                  label: "Discord",
+                  icon: <BsDiscord className="h-4 w-4" />,
+                },
+              ].map(({ href, label, icon }) => (
+                <Tooltip key={label}>
+                  <TooltipTrigger asChild>
+                    <Button
+                      asChild
+                      size="icon"
+                      variant="ghost"
+                      aria-label={label}
+                      className="hover:bg-muted rounded-full transition"
+                    >
+                      <Link href={href} target="_blank">
+                        {icon}
+                      </Link>
+                    </Button>
+                  </TooltipTrigger>
+                  <TooltipContent>
+                    <p>{label}</p>
+                  </TooltipContent>
+                </Tooltip>
+              ))}
+            </div>
+          </TooltipProvider>
 
           {/* About */}
-          <section>
-            <p className="leading-relaxed font-medium tracking-tight">
-              {about.intro}
-            </p>
-          </section>
         </div>
+        <section>
+          <hr />
+          <p className="p-4 leading-relaxed font-medium tracking-tight">
+            {about.intro}
+          </p>
+        </section>
 
         <section className="">
           <hr />
