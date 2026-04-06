@@ -1,93 +1,56 @@
-import { Label } from "./ui/label";
-import { Input } from "./ui/input";
-import { Textarea } from "./ui/textarea";
 import { Button } from "./ui/button";
 import { FaXTwitter } from "react-icons/fa6";
 import Link from "next/link";
 import { BsDiscord, BsGithub, BsLinkedin } from "react-icons/bs";
+import { IoMdMail } from "react-icons/io";
 
+const details = [
+  {
+    href: "https://linkedin.com/in/codexadarsh",
+    label: "LinkedIn",
+    icon: <BsLinkedin className="size-4" />,
+  },
+  {
+    href: "https://github.com/codexadarsh",
+    label: "Github",
+    icon: <BsGithub className="size-4" />,
+  },
+  {
+    href: "https://x.com/codexadarsh",
+    label: "X",
+    icon: <FaXTwitter className="size-4" />,
+  },
+  {
+    href: "",
+    label: "Discord",
+    icon: <BsDiscord className="size-4" />,
+  },
+
+  {
+    href: "mailto:mauryaadarsh793@gmail.com",
+    label: "Email",
+    icon: <IoMdMail className="size-4" />,
+  },
+];
 const Contact = () => {
   return (
-    <div className="max-w-4xl mx-auto">
+    <div className="mx-auto max-w-4xl">
       <hr />
-      <h3 className="text-2xl font-semibold px-4">Contact</h3>
+      <h2 className="px-4 text-xl font-semibold">Connect</h2>
       <hr />
-      <div className="flex flex-col md:flex-row justify-center p-4 gap-2">
-        <Button asChild variant={"outline"}>
-          <Link
-            href="https://x.com/codexadarsh"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-2"
-          >
-            <FaXTwitter />
-            <span>X.com</span>
-          </Link>
-        </Button>
-        <Button asChild variant={"outline"}>
-          <Link
-            href="https://linkedin.com/in/codexadarsh"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-2"
-          >
-            <BsLinkedin />
-            <span>Linkedin</span>
-          </Link>
-        </Button>
-        <Button asChild variant={"outline"}>
-          <Link
-            href="https://github.com/codexadarsh"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-2"
-          >
-            <BsGithub />
-            <span>Github</span>
-          </Link>
-        </Button>
-
-        <Button asChild variant={"outline"}>
-          <Link
-            href="https://discord.com/users/codexadarsh"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-2"
-          >
-            <BsDiscord />
-            <span>Discord</span>
-          </Link>
-        </Button>
-      </div>
-      <hr />
-      <div className="px-4 pb-4 rounded-xl">
-        <h2 className="py-4 text-muted-foreground">
-          You can also reach me via email
-        </h2>
-        <form>
-          <div className="flex flex-col gap-6">
-            <div className="grid gap-2">
-              <Label htmlFor="email">Email</Label>
-              <Input
-                id="email"
-                type="email"
-                placeholder="m@example.com"
-                required
-              />
-            </div>
-            <div className="grid gap-2">
-              <div className="flex items-center">
-                <Label htmlFor="message">Message</Label>
-              </div>
-              <Textarea
-                id="message"
-                placeholder="Type your message here"
-                required
-              />
-            </div>
-            <Button>Send me</Button>
-          </div>
-        </form>
+      <div className="flex flex-col justify-center gap-2 p-4 md:flex-row">
+        {details.map(({ href, label, icon }) => (
+          <Button asChild key={label} variant="ghost" size="sm">
+            <Link
+              key={label}
+              href={href}
+              target="_blank"
+              className="hover:text-primary flex items-center gap-2 text-sm font-medium"
+            >
+              {icon} {label}
+            </Link>
+          </Button>
+        ))}
       </div>
     </div>
   );

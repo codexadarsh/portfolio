@@ -99,12 +99,12 @@ const DATA = {
 
 export function Header() {
   return (
-    <div>
-      <div className="flex items-center justify-between max-w-3xl mx-auto md:border">
-        <p className="hidden md:block text-muted-foreground py-2 px-4">
+    <div className="bg-background/80 sticky top-0 z-50 backdrop-blur-sm px-4">
+      <div className="mx-auto flex max-w-3xl items-center justify-between md:border">
+        <p className="text-muted-foreground hidden px-4 py-2 text-sm font-medium md:block">
           Asia/Kolkata
         </p>
-        <div className="fixed bottom-10 left-1/2 -translate-x-1/2 z-10">
+        <div className="">
           <TooltipProvider>
             <Dock direction="middle">
               {DATA.navbar.map((item) => (
@@ -116,7 +116,7 @@ export function Header() {
                         aria-label={item.label}
                         className={cn(
                           buttonVariants({ variant: "ghost", size: "icon" }),
-                          "size-12 rounded-full"
+                          "size-12 rounded-full",
                         )}
                       >
                         <item.icon className="size-4" />
@@ -138,7 +138,7 @@ export function Header() {
                         aria-label={social.name}
                         className={cn(
                           buttonVariants({ variant: "ghost", size: "icon" }),
-                          "size-12 rounded-full"
+                          "size-12 rounded-full",
                         )}
                       >
                         <social.icon className="size-4" />
@@ -153,7 +153,7 @@ export function Header() {
             </Dock>
           </TooltipProvider>
         </div>
-        <p className="hidden md:block text-muted-foreground py-2 px-4">
+        <p className="text-muted-foreground hidden px-4 py-2 text-sm font-medium md:block">
           {<TimeDisplay timeZone="Asia/Kolkata" />}
         </p>
       </div>

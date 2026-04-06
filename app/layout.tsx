@@ -3,34 +3,50 @@ import { DM_Serif_Display, Inter } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "sonner";
 
-const DMSansDisplay = DM_Serif_Display({
-  variable: "--font-dm-serif-display",
+const dmserif = DM_Serif_Display({
+  variable: "--font-dmserif",
   subsets: ["latin"],
-  weight: "400",
+  weight: ["400"], // load only what you use
 });
 
 const inter = Inter({
   variable: "--font-inter",
   subsets: ["latin"],
+  weight: ["400", "500", "600"], // don't load everything blindly
 });
 
 export const metadata: Metadata = {
-  title: "Codexadarsh- Portfolio",
-  description: "Adarsh Maurya's personal portfolio showcasing projects, skills, and experience as a full-stack developer.",
+  title: {
+    default: "Adarsh Maurya | Full Stack Developer",
+    template: "%s | Adarsh Maurya",
+  },
+  description:
+    "Portfolio of Adarsh Maurya — Full-stack developer building scalable web apps with modern technologies.",
+  openGraph: {
+    title: "Adarsh Maurya Portfolio",
+    description: "Explore projects, skills, and experience of Adarsh Maurya.",
+    url: "https://yourdomain.com",
+    siteName: "Adarsh Portfolio",
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Adarsh Maurya Portfolio",
+    description: "Full-stack developer portfolio with projects and experience.",
+  },
 };
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
-    <html lang="en" className="dark">
-      <body
-        className={`${DMSansDisplay.variable} ${inter.variable} antialiased px-4 py-2`}
-      >
+    <html lang="en" suppressHydrationWarning>
+      <body className={`${dmserif.variable} ${inter.variable} antialiased`} >
         {children}
-        <Toaster />
+        <Toaster richColors position="top-right" />
       </body>
     </html>
   );

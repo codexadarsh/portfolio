@@ -2,8 +2,7 @@ import ProjectCard from "@/components/ProjectCard";
 const page = () => {
   return (
     <section className="max-w-3xl mx-auto flex flex-col border">
-      <h1 className="mt-4 font-semibold text-2xl text-center">Projects</h1>
-      <hr />
+      <h1 className="mt-4 text-xl text-center">Projects</h1>
       <div className="p-4">
         <ProjectCard />
       </div>

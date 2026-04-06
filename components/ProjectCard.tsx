@@ -86,7 +86,7 @@ type ProjectCardProps = {
   isHomePage?: boolean;
 };
 
-const truncate = (text: string, limit = 90) => {
+const truncate = (text: string, limit = 80) => {
   if (text.length <= limit) return text;
   const cut = text.lastIndexOf(" ", limit);
   return (cut === -1 ? text.slice(0, limit) : text.slice(0, cut)) + "…";
@@ -99,7 +99,7 @@ const ProjectCard = ({ isHomePage = false }: ProjectCardProps) => {
   const displayedCards = isHomePage ? cards.slice(0, 4) : cards;
 
   return (
-    <section className="mx-auto max-w-5xl">
+    <section className="mx-auto max-w-3xl">
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
         {displayedCards.map((card) => {
           const isOpen = expanded === card.title;
@@ -107,7 +107,7 @@ const ProjectCard = ({ isHomePage = false }: ProjectCardProps) => {
           return (
             <article
               key={card.title}
-              className="overflow-hidden rounded border bg-background transition hover:bg-accent"
+              className="bg-background hover:bg-accent overflow-hidden rounded border transition"
             >
               <div className="relative aspect-16/10 overflow-hidden">
                 <Image
@@ -121,7 +121,7 @@ const ProjectCard = ({ isHomePage = false }: ProjectCardProps) => {
               <div className="space-y-1 p-4">
                 <h2 className="text-base font-semibold">{card.title}</h2>
 
-                <p className="text-sm text-muted-foreground">
+                <p className="text-muted-foreground text-sm font-medium">
                   {isOpen ? card.description : truncate(card.description)}
                 </p>
 

@@ -5,13 +5,13 @@ const Sidebar = () => {
     { name: "Intro", path: "#intro" },
     { name: "Experience", path: "#experience" },
     { name: "Education", path: "#education" },
-    { name: "Contact", path: "#contact" },
+    // { name: "Contact", path: "#contact" },
   ];
 
   return (
     <div className="flex flex-col gap-2">
-      {header.map(({ name, path }) => (
-        <Link href={path} className="text-lg">
+      {header.map(({ name, path }, i) => (
+        <Link href={path} key={i} className="text-lg">
           - {name}
         </Link>
       ))}

@@ -2,7 +2,7 @@ import { GitHubCalendar } from "react-github-calendar";
 import { about, person } from "@/lib/constants";
 import { BlurFade } from "@/components/ui/blur-fade";
 import Contact from "@/components/Contact";
-import Sidebar from "@/components/sidebar";
+import Skills from "@/components/skills";
 
 export const metadata = {
   title: "About | Adarsh Maurya",
@@ -12,65 +12,65 @@ export const metadata = {
 export default function AboutPage() {
   return (
     <div>
-      <div className="fixed left-6 top-1/2 -translate-y-1/2 z-50 hidden md:block">
+      {/* <div className="fixed left-6 top-1/2 -translate-y-1/2 z-50 hidden md:block">
         <Sidebar />
-      </div>
+      </div> */}
       <BlurFade>
-        <div className="max-w-3xl mx-auto border">
+        <div className="mx-auto max-w-3xl border-r border-l">
           {/* HEADER */}
-          <div className="text-center p-4">
-            <h1 className="text-3xl font-bold">{person.name}</h1>
-            <p className=" text-md text-muted-foreground">{person.role}</p>
+          <div className="p-4 text-center">
+            <h1 className="text-xl font-bold">{person.name}</h1>
+            <p className="text-md text-muted-foreground">{person.role}</p>
           </div>
           {/* INTRO */}
           <section>
             <hr />
-            <h2 className="text-2xl font-semibold px-4" id="#intro">
+            <h2 className="px-4 text-xl font-medium" id="#intro">
               About{" "}
             </h2>
             <hr />
-            <p className="p-4">{about.intro}</p>
+            <p className="p-4 font-medium">{about.intro}</p>
           </section>
 
           {/* SKILLS */}
           <section>
             <hr />
-            <h2 className="text-2xl font-semibold px-4 " id="#stack">
+            <h2 className="px-4 text-xl font-medium" id="#stack">
               Stack
             </h2>
             <hr />
             <div className="flex flex-col">
-              <p className="p-4">
-                <a href="https://skillicons.dev">
-                  <img src="https://skillicons.dev/icons?i=js,ts,react,nextjs,mongodb,express,nodejs,supabase,git,github,figma,postman,vscode,vercel,netlify" />
-                </a>
-              </p>
+              <Skills />
             </div>
           </section>
 
           {/* EXPERIENCE */}
           <section>
             <hr />
-            <h2 className="text-2xl font-semibold px-4 " id="experience">
+            <h2 className="px-4 text-xl font-medium" id="experience">
               Experience
             </h2>
             <hr />
             {about.work.map((job, i) => (
               <div key={i} className="p-4">
-                <div className="flex flex-col md:flex-row justify-between">
+                <div className="flex flex-col justify-between md:flex-row">
                   <div className="flex flex-col">
-                    <h3 className="text-lg font-semibold">{job.company}</h3>
-                    <p className="text-muted-foreground">{job.role}</p>
+                    <h3 className="text font-medium">{job.company}</h3>
+                    <p className="text-muted-foreground text-sm font-medium">
+                      {job.role}
+                    </p>
                   </div>
                   <div className="flex flex-col md:items-end">
-                    <span className="text-muted-foreground">
+                    <span className="text-muted-foreground text-sm font-medium">
                       {job.timeframe}
                     </span>
-                    <p className="text-muted-foreground">{job.location}</p>
+                    <p className="text-muted-foreground text-sm font-medium">
+                      {job.location}
+                    </p>
                   </div>
                 </div>
 
-                <ul className="list-disc list-inside pt-4 space-y-2">
+                <ul className="list-inside list-disc space-y-2 pt-4 font-medium">
                   {job.achievements.map((a, idx) => (
                     <li key={idx}>{a}</li>
                   ))}
@@ -82,20 +82,26 @@ export default function AboutPage() {
           {/* EDUCATION */}
           <section>
             <hr />
-            <h2 className="text-2xl font-semibold px-4 " id="education">
+            <h2 className="px-4 text-xl font-medium" id="education">
               Education
             </h2>
             <hr />
             {about.education.map((edu, i) => (
               <div key={i} className="p-4">
-                <div className="flex flex-col md:flex-row justify-between ">
+                <div className="flex flex-col justify-between md:flex-row">
                   <div className="flex flex-col">
-                    <h3 className="text-lg font-semibold">{edu.name}</h3>
-                    <p className="text-muted-foreground">{edu.description}</p>
+                    <h3 className="text font-medium">{edu.name}</h3>
+                    <p className="text-muted-foreground text-sm font-medium">
+                      {edu.description}
+                    </p>
                   </div>
                   <div className="flex flex-col md:items-end">
-                    <p className="text-muted-foreground">{edu.timeframe}</p>
-                    <p className="text-muted-foreground">{edu.location}</p>
+                    <p className="text-muted-foreground text-sm font-medium">
+                      {edu.timeframe}
+                    </p>
+                    <p className="text-muted-foreground text-sm font-medium">
+                      {edu.location}
+                    </p>
                   </div>
                 </div>
               </div>
@@ -106,11 +112,11 @@ export default function AboutPage() {
           <section>
             <div>
               <hr />
-              <h2 className="text-2xl font-semibold px-4 " id="">
+              <h2 className="px-4 text-xl font-medium" id="">
                 Contributions
               </h2>
               <hr />
-              <div className="p-4" id="github">
+              <div className="p-4">
                 <GitHubCalendar username="codexadarsh" />
               </div>
             </div>
