@@ -1,39 +1,53 @@
 import type { Metadata } from "next";
-import { DM_Serif_Display, Inter } from "next/font/google";
+import { DM_Serif_Display, DM_Sans } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "sonner";
+import { ThemeProvider } from "@/components/theme-provider";
 
-const dmserif = DM_Serif_Display({
-  variable: "--font-dmserif",
+const serif = DM_Serif_Display({
+  variable: "--font-serif",
   subsets: ["latin"],
-  weight: ["400"], // load only what you use
+  weight: ["400"],
 });
 
-const inter = Inter({
-  variable: "--font-inter",
+const sans = DM_Sans({
+  variable: "--font-sans",
   subsets: ["latin"],
-  weight: ["400", "500", "600"], // don't load everything blindly
+  weight: ["400", "500", "600"],
 });
 
 export const metadata: Metadata = {
   title: {
-    default: "Adarsh Maurya | Full Stack Developer",
-    template: "%s | Adarsh Maurya",
+    default: "Adarsh Maurya — Full-Stack Developer",
+    template: "%s — Adarsh Maurya",
   },
+
   description:
-    "Portfolio of Adarsh Maurya — Full-stack developer building scalable web apps with modern technologies.",
+    "Full-stack developer building fast, scalable web applications using Next.js, React, and Node.js. Focused on performance, clean systems, and real-world products.",
+
   openGraph: {
-    title: "Adarsh Maurya Portfolio",
-    description: "Explore projects, skills, and experience of Adarsh Maurya.",
-    url: "https://yourdomain.com",
-    siteName: "Adarsh Portfolio",
+    title: "Adarsh Maurya",
+    description:
+      "Projects, experience, and work of a full-stack developer focused on performance and scalable systems.",
+    url: "https://codexadarsh.vercel.app", // FIXED
+    siteName: "Adarsh Maurya",
     locale: "en_US",
     type: "website",
+    images: [
+      {
+        url: "/og.png", // you need to create this
+        width: 1200,
+        height: 630,
+        alt: "Adarsh Maurya Portfolio",
+      },
+    ],
   },
+
   twitter: {
     card: "summary_large_image",
-    title: "Adarsh Maurya Portfolio",
-    description: "Full-stack developer portfolio with projects and experience.",
+    title: "Adarsh Maurya",
+    description: "Full-stack developer building real-world web products.",
+    images: ["/og.png"],
   },
 };
 
@@ -44,8 +58,23 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${dmserif.variable} ${inter.variable} antialiased`} >
-        {children}
+      <head>
+        <script
+          async
+          crossOrigin="anonymous"
+          src="https://tweakcn.com/live-preview.min.js"
+        />
+      </head>
+      <body className={`${serif.variable} ${sans.variable} antialiased`}>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          {children}
+        </ThemeProvider>
+
         <Toaster richColors position="top-right" />
       </body>
     </html>

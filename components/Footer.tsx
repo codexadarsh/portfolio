@@ -10,7 +10,7 @@ const Footer = () => {
           <Link
             href="https://x.com/codexadarsh"
             target="_blank"
-            className="underline-offset-4 hover:underline hover:text-primary"
+            className="text-primary underline-offset-4 hover:underline"
           >
             codexadarsh
           </Link>
@@ -23,7 +23,7 @@ const Footer = () => {
           <Link
             href="https://github.com/codexadarsh"
             target="_blank"
-            className="underline-offset-4 hover:underline hover:text-primary"
+            className="text-primary underline-offset-4 hover:underline"
           >
             GitHub
           </Link>

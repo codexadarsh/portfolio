@@ -1,10 +1,16 @@
 import { Button } from "./ui/button";
 import { FaXTwitter } from "react-icons/fa6";
 import Link from "next/link";
-import { BsDiscord, BsGithub, BsLinkedin } from "react-icons/bs";
+import { BsGithub, BsLinkedin } from "react-icons/bs";
 import { IoMdMail } from "react-icons/io";
 
-const details = [
+const primary = {
+  href: "mailto:mauryaadarsh793@gmail.com",
+  label: "Email Me",
+  icon: <IoMdMail className="size-4" />,
+};
+
+const secondary = [
   {
     href: "https://linkedin.com/in/codexadarsh",
     label: "LinkedIn",
@@ -12,7 +18,7 @@ const details = [
   },
   {
     href: "https://github.com/codexadarsh",
-    label: "Github",
+    label: "GitHub",
     icon: <BsGithub className="size-4" />,
   },
   {
@@ -20,37 +26,48 @@ const details = [
     label: "X",
     icon: <FaXTwitter className="size-4" />,
   },
-  {
-    href: "",
-    label: "Discord",
-    icon: <BsDiscord className="size-4" />,
-  },
-
-  {
-    href: "mailto:mauryaadarsh793@gmail.com",
-    label: "Email",
-    icon: <IoMdMail className="size-4" />,
-  },
 ];
+
 const Contact = () => {
   return (
-    <div className="mx-auto max-w-4xl">
-      <hr />
-      <h2 className="px-4 text-xl font-semibold">Connect</h2>
-      <hr />
-      <div className="flex flex-col items-start md:items-center justify-center gap-2 p-4 md:flex-row">
-        {details.map(({ href, label, icon }) => (
-          <Button asChild key={label} variant="ghost" size="sm">
+    <div className="mx-auto max-w-4xl px-4">
+      {/* Message */}
+      <div className="mb-6 max-w-md">
+        <h3 className="text-base font-semibold tracking-tight">
+          Have a project in mind?
+        </h3>
+        <p className="text-muted-foreground mt-1 text-sm">
+          I’m open to building products, collaborations, or freelance work.
+        </p>
+      </div>
+
+      {/* Actions */}
+      <div className="flex flex-col items-start gap-4 md:flex-row md:items-center md:justify-between">
+        {/* Primary CTA */}
+        <Button asChild size="sm">
+          <Link
+            href={primary.href}
+            className="flex items-center gap-2 text-sm font-medium"
+          >
+            {primary.icon}
+            {primary.label}
+          </Link>
+        </Button>
+
+        {/* Secondary links */}
+        <div className="flex items-center gap-3">
+          {secondary.map(({ href, label, icon }) => (
             <Link
               key={label}
               href={href}
               target="_blank"
-              className="hover:text-primary flex items-center gap-2 text-sm font-medium"
+              className="text-muted-foreground hover:text-foreground flex items-center gap-2 text-sm transition"
             >
-              {icon} {label}
+              {icon}
+              <span className="hidden sm:inline">{label}</span>
             </Link>
-          </Button>
-        ))}
+          ))}
+        </div>
       </div>
     </div>
   );

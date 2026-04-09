@@ -1,5 +1,5 @@
 import { GitHubCalendar } from "react-github-calendar";
-import { about, person } from "@/lib/constants";
+import { about } from "@/lib/constants";
 import { BlurFade } from "@/components/ui/blur-fade";
 import Contact from "@/components/Contact";
 import Skills from "@/components/skills";
@@ -11,121 +11,116 @@ export const metadata = {
 
 export default function AboutPage() {
   return (
-    <div>
-      {/* <div className="fixed left-6 top-1/2 -translate-y-1/2 z-50 hidden md:block">
-        <Sidebar />
-      </div> */}
-      <BlurFade>
-        <div className="mx-auto max-w-3xl border-r border-l">
-          {/* HEADER */}
-          <div className="p-4 text-center">
-            <h1 className="text-xl font-bold">{person.name}</h1>
-            <p className="text-md text-muted-foreground">{person.role}</p>
+    <BlurFade>
+      <main className="mx-auto max-w-3xl border-x">
+        {/* HERO */}
+        <section className="px-6 py-8">
+          <div className="max-w-xl">
+            {/* Name + role (light, not loud) */}
+            <p className="text-foreground text-md font-medium">
+              Adarsh Maurya · Full-Stack Developer
+            </p>
+
+            {/* Intro (main content, not oversized) */}
+            <p className="text-muted-foreground mt-3 text-sm leading-relaxed">
+              {about.intro}
+            </p>
           </div>
-          {/* INTRO */}
-          <section>
-            <hr />
-            <h2 className="px-4 text-xl font-medium" id="#intro">
-              About{" "}
-            </h2>
-            <hr />
-            <p className="p-4 font-medium">{about.intro}</p>
-          </section>
+        </section>
 
-          {/* SKILLS */}
-          <section>
-            <hr />
-            <h2 className="px-4 text-xl font-medium" id="#stack">
-              Stack
-            </h2>
-            <hr />
-            <div className="flex flex-col">
-              <Skills />
-            </div>
-          </section>
+        {/* EXPERIENCE (PRIMARY PROOF) */}
+        <section className="px-6 py-10">
+          <SectionLabel index="01" title="Experience" />
 
-          {/* EXPERIENCE */}
-          <section>
-            <hr />
-            <h2 className="px-4 text-xl font-medium" id="experience">
-              Experience
-            </h2>
-            <hr />
+          <div className="mt-6 space-y-8">
             {about.work.map((job, i) => (
-              <div key={i} className="p-4">
+              <div key={i}>
                 <div className="flex flex-col justify-between md:flex-row">
-                  <div className="flex flex-col">
-                    <h3 className="text font-medium">{job.company}</h3>
-                    <p className="text-muted-foreground text-sm font-medium">
-                      {job.role}
-                    </p>
+                  <div>
+                    <h3 className="font-medium">{job.company}</h3>
+                    <p className="text-muted-foreground text-sm">{job.role}</p>
                   </div>
-                  <div className="flex flex-col md:items-end">
-                    <span className="text-muted-foreground text-sm font-medium">
-                      {job.timeframe}
-                    </span>
-                    <p className="text-muted-foreground text-sm font-medium">
-                      {job.location}
-                    </p>
+
+                  <div className="text-muted-foreground text-sm md:text-right">
+                    <p>{job.timeframe}</p>
+                    <p>{job.location}</p>
                   </div>
                 </div>
 
-                <ul className="list-inside list-disc space-y-2 pt-4 font-medium">
+                <ul className="text-muted-foreground mt-3 list-disc space-y-1 pl-5 text-sm">
                   {job.achievements.map((a, idx) => (
                     <li key={idx}>{a}</li>
                   ))}
                 </ul>
               </div>
             ))}
-          </section>
+          </div>
+        </section>
 
-          {/* EDUCATION */}
-          <section>
-            <hr />
-            <h2 className="px-4 text-xl font-medium" id="education">
-              Education
-            </h2>
-            <hr />
+        {/* SKILLS */}
+        <section className="px-6 py-10">
+          <SectionLabel index="02" title="Skills" />
+
+          <div className="mt-6">
+            <Skills />
+          </div>
+        </section>
+
+        {/* EDUCATION */}
+        <section className="px-6 py-10">
+          <SectionLabel index="03" title="Education" />
+
+          <div className="mt-6 space-y-6">
             {about.education.map((edu, i) => (
-              <div key={i} className="p-4">
-                <div className="flex flex-col justify-between md:flex-row">
-                  <div className="flex flex-col">
-                    <h3 className="text font-medium">{edu.name}</h3>
-                    <p className="text-muted-foreground text-sm font-medium">
-                      {edu.description}
-                    </p>
-                  </div>
-                  <div className="flex flex-col md:items-end">
-                    <p className="text-muted-foreground text-sm font-medium">
-                      {edu.timeframe}
-                    </p>
-                    <p className="text-muted-foreground text-sm font-medium">
-                      {edu.location}
-                    </p>
-                  </div>
+              <div
+                key={i}
+                className="flex flex-col justify-between md:flex-row"
+              >
+                <div>
+                  <h3 className="font-medium">{edu.name}</h3>
+                  <p className="text-muted-foreground text-sm">
+                    {edu.description}
+                  </p>
+                </div>
+
+                <div className="text-muted-foreground text-sm md:text-right">
+                  <p>{edu.timeframe}</p>
+                  <p>{edu.location}</p>
                 </div>
               </div>
             ))}
-          </section>
+          </div>
+        </section>
 
-          {/* Contributions */}
-          <section>
-            <div>
-              <hr />
-              <h2 className="px-4 text-xl font-medium" id="">
-                Contributions
-              </h2>
-              <hr />
-              <div className="p-4">
-                <GitHubCalendar username="codexadarsh" />
-              </div>
-            </div>
-          </section>
-          <section id="contact">
-            <Contact />
-          </section>
-        </div>
-      </BlurFade>
+        {/* GITHUB (LOW PRIORITY) */}
+        <section className="px-6 py-10">
+          <SectionLabel index="04" title="Contributions" />
+
+          <div className="mt-6 overflow-x-auto">
+            <GitHubCalendar username="codexadarsh" />
+          </div>
+        </section>
+
+        {/* CONTACT */}
+        <section className="px-6 py-10">
+          <Contact />
+        </section>
+      </main>
+    </BlurFade>
+  );
+}
+
+/* Reuse your clean label */
+function SectionLabel({ index, title }: { index: string; title: string }) {
+  return (
+    <div className="flex items-center gap-3">
+      <h2 className="text-muted-foreground text-xs font-medium tracking-widest uppercase">
+        {title}
+      </h2>
+      <div className="bg-border/40 h-px flex-1" />
+      <span className="text-muted-foreground/50 text-[10px] font-medium tracking-widest">
+        {index}
+      </span>
     </div>
   );
 }

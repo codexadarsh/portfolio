@@ -30,110 +30,139 @@ const Home = async () => {
   }
 
   return (
-    <section className="mx-auto max-w-3xl border-r border-l">
+    <main className="mx-auto min-h-screen max-w-3xl border-r border-l">
       <BlurFade>
-        <div className="flex flex-col md:flex-row justify-between gap-6 p-4 md:p-8">
-          <div className="flex items-center gap-4">
-            <Tooltip>
-              <TooltipTrigger asChild>
-                <div>
-                  <Logo className="size-10" />
-                </div>
-              </TooltipTrigger>
-              <TooltipContent side="right">
-                <p>Logo</p>
-              </TooltipContent>
-            </Tooltip>
+        {/* ── Hero ── */}
+        <header className="px-6 pt-10 pb-8 md:px-10 md:pt-12">
+          <div className="flex flex-col gap-6 md:flex-row md:items-start md:justify-between">
+            {/* Identity */}
+            <div className="flex items-center gap-4">
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <div className="">
+                    <Logo className="size-9" />
+                  </div>
+                </TooltipTrigger>
+                <TooltipContent>
+                  <p>Logo</p>
+                </TooltipContent>
+              </Tooltip>
 
-            <div className="flex flex-col">
-              <h1 className="text-xl font-semibold">Adarsh Maurya</h1>
-              <TextFlip className="text-muted-foreground text-sm font-medium">
-                <span>Student</span>
-                <span>Developer</span>
-                <span>Builder</span>
-              </TextFlip>
+              <div>
+                <h1 className="text-foreground text-lg font-semibold tracking-tight">
+                  Adarsh Maurya
+                </h1>
+                <TextFlip className="text-muted-foreground text-sm font-medium">
+                  <span>Student</span>
+                  <span>Developer</span>
+                  <span>Builder</span>
+                </TextFlip>
+              </div>
             </div>
+
+            {/* Socials */}
+            <TooltipProvider delayDuration={80}>
+              <div className="flex items-center gap-1">
+                {[
+                  {
+                    href: "https://x.com/codexadarsh",
+                    label: "X / Twitter",
+                    icon: <FaXTwitter className="h-3.5 w-3.5" />,
+                  },
+                  {
+                    href: "https://linkedin.com/in/codexadarsh",
+                    label: "LinkedIn",
+                    icon: <BsLinkedin className="h-3.5 w-3.5" />,
+                  },
+                  {
+                    href: "https://github.com/codexadarsh",
+                    label: "GitHub",
+                    icon: <BsGithub className="h-3.5 w-3.5" />,
+                  },
+                  {
+                    href: "https://discord.com/users/codexadarsh",
+                    label: "Discord",
+                    icon: <BsDiscord className="h-3.5 w-3.5" />,
+                  },
+                ].map(({ href, label, icon }) => (
+                  <Tooltip key={label}>
+                    <TooltipTrigger asChild>
+                      <Button
+                        asChild
+                        size="icon"
+                        variant="ghost"
+                        aria-label={label}
+                        className="text-muted-foreground hover:bg-muted hover:text-foreground h-8 w-8 rounded-full transition"
+                      >
+                        <Link href={href} target="_blank">
+                          {icon}
+                        </Link>
+                      </Button>
+                    </TooltipTrigger>
+                    <TooltipContent>
+                      <p>{label}</p>
+                    </TooltipContent>
+                  </Tooltip>
+                ))}
+              </div>
+            </TooltipProvider>
           </div>
 
-          {/* Socials */}
-          <TooltipProvider delayDuration={80}>
-            <div className="flex items-center gap-2">
-              {[
-                {
-                  href: "https://x.com/codexadarsh",
-                  label: "X",
-                  icon: <FaXTwitter className="h-4 w-4" />,
-                },
-                {
-                  href: "https://linkedin.com/in/codexadarsh",
-                  label: "LinkedIn",
-                  icon: <BsLinkedin className="h-4 w-4" />,
-                },
-                {
-                  href: "https://github.com/codexadarsh",
-                  label: "GitHub",
-                  icon: <BsGithub className="h-4 w-4" />,
-                },
-                {
-                  href: "https://discord.com/users/codexadarsh",
-                  label: "Discord",
-                  icon: <BsDiscord className="h-4 w-4" />,
-                },
-              ].map(({ href, label, icon }) => (
-                <Tooltip key={label}>
-                  <TooltipTrigger asChild>
-                    <Button
-                      asChild
-                      size="icon"
-                      variant="ghost"
-                      aria-label={label}
-                      className="hover:bg-muted rounded-full transition"
-                    >
-                      <Link href={href} target="_blank">
-                        {icon}
-                      </Link>
-                    </Button>
-                  </TooltipTrigger>
-                  <TooltipContent>
-                    <p>{label}</p>
-                  </TooltipContent>
-                </Tooltip>
-              ))}
-            </div>
-          </TooltipProvider>
-
-          {/* About */}
-        </div>
-        <section>
-          <hr />
-          <p className="p-4 leading-relaxed font-medium tracking-tight">
+          {/* Bio */}
+          <p className="text-muted-foreground mt-6 max-w-xl text-sm leading-relaxed">
             {about.intro}
           </p>
-        </section>
+        </header>
 
-        <section className="">
-          <hr />
-          <h1 className="px-4 text-xl font-semibold"> Projects </h1>
-          <hr />
-          <div className="p-4">
+        {/* <div className="border-border/50 border-t" /> */}
+
+        {/* ── Projects ── */}
+        <section className="px-6 py-8 md:px-10">
+          <SectionLabel index="01" title="Projects" />
+          <div className="mt-6">
             <ProjectCard isHomePage={true} />
           </div>
         </section>
-        <section className="">
-          <hr />
-          <h1 className="px-4 text-xl font-semibold">Blogs </h1>
-          <hr />
-          <BlogPagination
-            rows={JSON.parse(JSON.stringify(rows))}
-            pageSize={5}
-          />
+
+        {/* <div className="border-border/50 border-t" /> */}
+
+        {/* ── Blogs ── */}
+        <section className="px-6 py-8 md:px-10">
+          <SectionLabel index="02" title="Writing" />
+          <div className="mt-6">
+            <BlogPagination
+              rows={JSON.parse(JSON.stringify(rows))}
+              pageSize={5}
+            />
+          </div>
         </section>
-        <section>
-          <Contact />
+
+        {/* <div className="border-border/50 border-t" /> */}
+
+        {/* ── Contact ── */}
+        <section className="px-6 py-8 md:px-10">
+          <SectionLabel index="03" title="Contact" />
+          <div className="mt-6">
+            <Contact />
+          </div>
         </section>
       </BlurFade>
-    </section>
+    </main>
   );
 };
+
+function SectionLabel({ index, title }: { index: string; title: string }) {
+  return (
+    <div className="flex items-center gap-3">
+      <h2 className="text-muted-foreground text-xs font-medium tracking-widest uppercase">
+        {title}
+      </h2>
+      <div className="bg-border/40 h-px flex-1" />
+      <span className="text-muted-foreground/50 text-[10px] font-medium tracking-widest">
+        {index}
+      </span>
+    </div>
+  );
+}
 
 export default Home;

@@ -2,15 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
-import {
-  CalendarIcon,
-  CircleUserRound,
-  HomeIcon,
-  MailIcon,
-  PencilIcon,
-  Grid2X2,
-} from "lucide-react";
-import { AnimatedThemeToggler } from "@/components/ui/animated-theme-toggler";
+import { CircleUserRound, HomeIcon, PencilIcon, Grid2X2 } from "lucide-react";
 
 import { cn } from "@/lib/utils";
 import { buttonVariants } from "@/components/ui/button";
@@ -21,10 +13,11 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
-import { Dock, DockIcon } from "@/components/ui/dock";
+import { DockIcon } from "@/components/ui/dock";
 import { useState, useEffect } from "react";
 import { BsGithub, BsLinkedin } from "react-icons/bs";
 import { FaXTwitter } from "react-icons/fa6";
+import { ModeToggle } from "./theme-toggle";
 
 export type IconProps = React.HTMLAttributes<SVGElement>;
 type TimeDisplayProps = {
@@ -91,7 +84,7 @@ const DATA = {
       theme: {
         name: "Toggle Theme",
         url: "#",
-        icon: AnimatedThemeToggler,
+        icon: ModeToggle,
       },
     },
   },
@@ -99,14 +92,14 @@ const DATA = {
 
 export function Header() {
   return (
-    <div className="bg-background/80 sticky top-0 z-50 backdrop-blur-sm px-4">
+    <div className="bg-background/80 sticky top-0 z-50 px-4 backdrop-blur-sm">
       <div className="mx-auto flex max-w-3xl items-center justify-between md:border">
         <p className="text-muted-foreground hidden px-4 py-2 text-sm font-medium md:block">
           Asia/Kolkata
         </p>
         <div className="">
           <TooltipProvider>
-            <Dock direction="middle">
+            <div className="flex items-center">
               {DATA.navbar.map((item) => (
                 <DockIcon key={item.label}>
                   <Tooltip>
@@ -150,7 +143,7 @@ export function Header() {
                   </Tooltip>
                 </DockIcon>
               ))}
-            </Dock>
+            </div>
           </TooltipProvider>
         </div>
         <p className="text-muted-foreground hidden px-4 py-2 text-sm font-medium md:block">

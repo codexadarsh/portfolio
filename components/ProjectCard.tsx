@@ -2,9 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { Button } from "./ui/button";
-import { ArrowUpRight, BookOpen } from "lucide-react";
-import { useState } from "react";
+import { ArrowUpRight, Github } from "lucide-react";
 import { useRouter } from "next/navigation";
 
 type CardProps = {
@@ -13,6 +11,9 @@ type CardProps = {
   description: string;
   github: string;
   link: string;
+  tag: string;
+  stack: string[];
+  index: number;
 };
 
 const cards: CardProps[] = [
@@ -20,144 +21,197 @@ const cards: CardProps[] = [
     image: "/projects/project-01/arch.png",
     title: "Arch Events",
     description:
-      "A full event-management platform showcasing services and past projects with a polished, high-end UI. Built to highlight credibility, seamless navigation, and strong visual storytelling.",
+      "Full event-management platform with polished UI, seamless navigation, and strong visual storytelling.",
     github: "https://github.com/codexadarsh",
     link: "https://archeventsuae-com.vercel.app/",
+    tag: "Web app",
+    stack: ["Next.js", "Tailwind"],
+    index: 1,
   },
   {
     image: "/projects/project-01/Travels.png",
     title: "Jet Journey Travels",
     description:
-      "A travel-booking website designed for quick exploration of packages, destinations, and itineraries. Optimized for clarity, fast browsing, and converting users into leads.",
+      "Travel-booking site optimised for fast package browsing and converting visitors into leads.",
     github: "https://github.com/codexadarsh",
     link: "https://jetjourneytravels-com-ten.vercel.app/",
+    tag: "Web app",
+    stack: ["React", "CSS"],
+    index: 2,
   },
   {
     image: "/projects/project-01/Platform.png",
     title: "Dev Events",
     description:
-      "A community platform for developers to discover tech events, share knowledge, and stay updated. Focused on clean information architecture and simple event discovery.",
+      "Community platform for developers to discover tech events, share knowledge, and stay updated.",
     github: "https://github.com/codexadarsh",
     link: "https://devevent-beta.vercel.app/",
+    tag: "Platform",
+    stack: ["Next.js", "API"],
+    index: 3,
   },
   {
     image: "/projects/project-01/React.png",
     title: "Movie Discovery",
     description:
-      "A movie and TV search app powered by live data, helping users explore trending titles, genres, and ratings. Designed for fast search and smooth content browsing.",
+      "Movie & TV search app powered by live data — trending titles, genres, and ratings.",
     github: "https://github.com/codexadarsh",
     link: "https://moodyflex.netlify.app/",
+    tag: "Web app",
+    stack: ["React", "TMDB API"],
+    index: 4,
   },
   {
     image: "/projects/project-01/Jobs.png",
     title: "Job Portal",
     description:
-      "A job-listing platform featuring role search, filters, and application flow. Built as a full-stack practice project to explore CRUD operations and clean UI patterns.",
+      "Job-listing platform with role search, filters, and full application flow built as a full-stack project.",
     github: "https://github.com/codexadarsh",
     link: "https://reactportal.vercel.app/",
+    tag: "Full-stack",
+    stack: ["React", "CRUD"],
+    index: 5,
   },
   {
     image: "/projects/project-01/Home.png",
-    title: "Django Blog App",
+    title: "Django Blog",
     description:
-      "A full-stack blog application built with Django featuring authentication, post management, and a clean editorial layout.",
+      "Full-stack blog application with authentication, post management, and a clean editorial layout.",
     github: "https://github.com/codexadarsh",
     link: "https://django-blog-app-kopn.onrender.com/",
+    tag: "Full-stack",
+    stack: ["Django", "Python"],
+    index: 6,
   },
   {
     image: "/projects/project-01/OpenGPT.png",
     title: "OpenGPT",
     description:
-      "A free LLM hub allowing users to access multiple AI models in one interface. Built with a lightweight layout focused on speed, usability, and minimal distractions.",
+      "Free LLM hub allowing users to access multiple AI models in one lightweight, distraction-free interface.",
     github: "https://github.com/codexadarsh",
     link: "https://opengpt-rosy.vercel.app/",
+    tag: "AI tool",
+    stack: ["Next.js", "AI SDK"],
+    index: 7,
   },
   {
     image: "/projects/project-01/showcase.png",
     title: "Portfolio",
     description:
-      "My personal portfolio showcasing projects, skills, and blogs. Designed for clarity, speed, and strong visual presentation.",
+      "Personal portfolio showcasing projects, skills, and blogs — built for clarity, speed, and strong visual presentation.",
     github: "https://github.com/codexadarsh",
     link: "https://codexadarsh.vercel.app/",
+    tag: "Portfolio",
+    stack: ["Next.js", "Tailwind"],
+    index: 8,
   },
 ];
+
+function ProjectCardItem({ card }: { card: CardProps }) {
+  const num = String(card.index).padStart(2, "0");
+
+  return (
+    <article className="group border-border/50 bg-background hover:border-border relative flex flex-col overflow-hidden rounded-xl border transition-colors duration-200">
+      {/* Thumbnail */}
+      <div className="bg-muted relative aspect-[16/10] overflow-hidden">
+        <Image
+          src={card.image}
+          alt={card.title}
+          fill
+          className="object-cover transition-transform duration-500 group-hover:scale-[1.04]"
+        />
+        {/* Index badge */}
+        <span className="border-border/60 bg-background/90 text-muted-foreground absolute top-3 left-3 rounded-full border px-2.5 py-0.5 text-[10px] font-medium tracking-widest backdrop-blur-sm">
+          {num}
+        </span>
+      </div>
+
+      {/* Body */}
+      <div className="flex flex-1 flex-col gap-3 p-4">
+        {/* Title + tag */}
+        <div className="flex items-start justify-between gap-2">
+          <h2 className="text-foreground text-sm leading-snug font-semibold">
+            {card.title}
+          </h2>
+          <span className="shrink-0 rounded-full bg-violet-50 px-2.5 py-0.5 text-[10px] font-medium tracking-wide text-violet-700 dark:bg-violet-950/40 dark:text-violet-300">
+            {card.tag}
+          </span>
+        </div>
+
+        {/* Description */}
+        <p className="text-muted-foreground text-xs leading-relaxed">
+          {card.description}
+        </p>
+
+        {/* Divider */}
+        <div className="border-border/50 border-t" />
+
+        {/* Footer: stack + actions */}
+        <div className="flex items-center justify-between gap-2">
+          {/* Stack pills */}
+          <div className="flex flex-wrap gap-1.5">
+            {card.stack.map((s) => (
+              <span
+                key={s}
+                className="border-border/60 bg-muted text-muted-foreground rounded-full border px-2 py-0.5 text-[10px]"
+              >
+                {s}
+              </span>
+            ))}
+          </div>
+
+          {/* Action links */}
+          <div className="flex shrink-0 items-center gap-1.5">
+            <Link
+              href={card.github}
+              target="_blank"
+              className="border-border/60 text-muted-foreground hover:border-border hover:text-foreground flex items-center gap-1 rounded-full border px-2.5 py-1 text-[11px] font-medium transition-colors"
+            >
+              <Github className="h-2.5 w-2.5" />
+              Source
+            </Link>
+            <Link
+              href={card.link}
+              target="_blank"
+              className="border-border/60 text-muted-foreground hover:border-border hover:text-foreground flex items-center gap-1 rounded-full border px-2.5 py-1 text-[11px] font-medium transition-colors"
+            >
+              Live
+              <ArrowUpRight className="h-2.5 w-2.5" />
+            </Link>
+          </div>
+        </div>
+      </div>
+    </article>
+  );
+}
 
 type ProjectCardProps = {
   isHomePage?: boolean;
 };
 
-const truncate = (text: string, limit = 80) => {
-  if (text.length <= limit) return text;
-  const cut = text.lastIndexOf(" ", limit);
-  return (cut === -1 ? text.slice(0, limit) : text.slice(0, cut)) + "…";
-};
-
 const ProjectCard = ({ isHomePage = false }: ProjectCardProps) => {
-  const [expanded, setExpanded] = useState<string | null>(null);
   const router = useRouter();
-
   const displayedCards = isHomePage ? cards.slice(0, 4) : cards;
 
   return (
     <section className="mx-auto max-w-3xl">
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-        {displayedCards.map((card) => {
-          const isOpen = expanded === card.title;
-
-          return (
-            <article
-              key={card.title}
-              className="bg-background hover:bg-accent overflow-hidden rounded border transition"
-            >
-              <div className="relative aspect-16/10 overflow-hidden">
-                <Image
-                  src={card.image}
-                  alt={card.title}
-                  fill
-                  className="object-cover transition-transform duration-300 hover:scale-105"
-                />
-              </div>
-
-              <div className="space-y-1 p-4">
-                <h2 className="text-base font-semibold">{card.title}</h2>
-
-                <p className="text-muted-foreground text-sm font-medium">
-                  {isOpen ? card.description : truncate(card.description)}
-                </p>
-
-                <button
-                  onClick={() => setExpanded(isOpen ? null : card.title)}
-                  className="text-sm font-medium text-blue-400 hover:text-blue-500"
-                >
-                  {isOpen ? "Show less" : "Read more"}
-                </button>
-
-                <div className="flex justify-between pt-2">
-                  <Button size="sm" variant="ghost" asChild>
-                    <Link href={card.github} target="_blank">
-                      <BookOpen className="size-3" />
-                      <span className="text-sm"> Source</span>
-                    </Link>
-                  </Button>
-
-                  <Button size="sm" variant="ghost" asChild>
-                    <Link href={card.link} target="_blank">
-                      <span className="text-sm"> Live</span>
-                      <ArrowUpRight className="size-3" />
-                    </Link>
-                  </Button>
-                </div>
-              </div>
-            </article>
-          );
-        })}
+        {displayedCards.map((card) => (
+          <ProjectCardItem key={card.title} card={card} />
+        ))}
       </div>
 
       {isHomePage && cards.length > 4 && (
-        <div className="flex justify-center pt-6">
-          <Button variant="outline" onClick={() => router.push("/project")}>
-            View all projects ({cards.length})
-          </Button>
+        <div className="flex justify-center pt-8">
+          <button
+            onClick={() => router.push("/project")}
+            className="border-border/60 text-muted-foreground hover:border-border hover:text-foreground flex items-center gap-2 rounded-full border px-5 py-2 text-sm font-medium transition-colors"
+          >
+            View all projects
+            <span className="bg-muted rounded-full px-2 py-0.5 text-xs">
+              {cards.length}
+            </span>
+          </button>
         </div>
       )}
     </section>
