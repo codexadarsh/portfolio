@@ -33,21 +33,6 @@ export const metadata: Metadata = {
     siteName: "Adarsh Maurya",
     locale: "en_US",
     type: "website",
-    images: [
-      {
-        url: "/og.png", // you need to create this
-        width: 1200,
-        height: 630,
-        alt: "Adarsh Maurya Portfolio",
-      },
-    ],
-  },
-
-  twitter: {
-    card: "summary_large_image",
-    title: "Adarsh Maurya",
-    description: "Full-stack developer building real-world web products.",
-    images: ["/og.png"],
   },
 };
 
