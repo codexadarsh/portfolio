@@ -9,7 +9,7 @@ type CardProps = {
   image: string;
   title: string;
   description: string;
-  github: string;
+  github?: string;
   link: string;
   tag: string;
   stack: string[];
@@ -18,93 +18,56 @@ type CardProps = {
 
 const cards: CardProps[] = [
   {
-    image: "/projects/project-01/arch.png",
+    image: "/projects/arch.png",
     title: "Arch Events",
     description:
       "Full event-management platform with polished UI, seamless navigation, and strong visual storytelling.",
-    github: "https://github.com/codexadarsh",
-    link: "https://archeventsuae-com.vercel.app/",
+    link: "https://archeventsuae.com/",
     tag: "Web app",
     stack: ["Next.js", "Tailwind"],
     index: 1,
   },
   {
-    image: "/projects/project-01/Travels.png",
+    image: "/projects/Travels.png",
     title: "Jet Journey Travels",
     description:
       "Travel-booking site optimised for fast package browsing and converting visitors into leads.",
-    github: "https://github.com/codexadarsh",
-    link: "https://jetjourneytravels-com-ten.vercel.app/",
+    link: "https://jetjourneytravels.com/",
     tag: "Web app",
-    stack: ["React", "CSS"],
+    stack: ["Next.js", "Tailwind"],
     index: 2,
   },
   {
-    image: "/projects/project-01/Platform.png",
-    title: "Dev Events",
+    image: "/projects/pulsex.png",
+    title: "Pulsex Media Solutions",
     description:
-      "Community platform for developers to discover tech events, share knowledge, and stay updated.",
-    github: "https://github.com/codexadarsh",
-    link: "https://devevent-beta.vercel.app/",
-    tag: "Platform",
-    stack: ["Next.js", "API"],
+      "Pulsex Media Solutions is a comprehensive platform for all your media needs.",
+    link: "https://revamped-gopulsex-in.vercel.app/",
+    tag: "SaaS",
+    stack: ["Next.js", "Tailwind"],
     index: 3,
   },
   {
-    image: "/projects/project-01/React.png",
-    title: "Movie Discovery",
+    image: "/projects/fame.png",
+    title: "Fameforge",
     description:
-      "Movie & TV search app powered by live data — trending titles, genres, and ratings.",
-    github: "https://github.com/codexadarsh",
-    link: "https://moodyflex.netlify.app/",
-    tag: "Web app",
-    stack: ["React", "TMDB API"],
+      "Fameforge is a one-stop platform for all your creative needs.",
+    link: "https://fameforge.vercel.app/",
+    tag: "SaaS",
+    stack: ["Next.js", "Tailwind"],
     index: 4,
   },
-  {
-    image: "/projects/project-01/Jobs.png",
-    title: "Job Portal",
-    description:
-      "Job-listing platform with role search, filters, and full application flow built as a full-stack project.",
-    github: "https://github.com/codexadarsh",
-    link: "https://reactportal.vercel.app/",
-    tag: "Full-stack",
-    stack: ["React", "CRUD"],
-    index: 5,
-  },
-  {
-    image: "/projects/project-01/Home.png",
-    title: "Django Blog",
-    description:
-      "Full-stack blog application with authentication, post management, and a clean editorial layout.",
-    github: "https://github.com/codexadarsh",
-    link: "https://django-blog-app-kopn.onrender.com/",
-    tag: "Full-stack",
-    stack: ["Django", "Python"],
-    index: 6,
-  },
-  {
-    image: "/projects/project-01/OpenGPT.png",
-    title: "OpenGPT",
-    description:
-      "Free LLM hub allowing users to access multiple AI models in one lightweight, distraction-free interface.",
-    github: "https://github.com/codexadarsh",
-    link: "https://opengpt-rosy.vercel.app/",
-    tag: "AI tool",
-    stack: ["Next.js", "AI SDK"],
-    index: 7,
-  },
-  {
-    image: "/projects/project-01/showcase.png",
-    title: "Portfolio",
-    description:
-      "Personal portfolio showcasing projects, skills, and blogs — built for clarity, speed, and strong visual presentation.",
-    github: "https://github.com/codexadarsh",
-    link: "https://codexadarsh.vercel.app/",
-    tag: "Portfolio",
-    stack: ["Next.js", "Tailwind"],
-    index: 8,
-  },
+  // {
+  //   image: "/projects/opengpt.png",
+  //   title: "OpenGPT",
+  //   description:
+  //     "Free LLM hub allowing users to access multiple AI models in one lightweight, distraction-free interface.",
+  //   github: "https://github.com/codexadarsh/opengpt",
+  //   link: "https://opengpt-rosy.vercel.app/",
+  //   tag: "AI tool",
+  //   stack: ["Next.js", "AI SDK"],
+  //   index: 5,
+  // },
 ];
 
 function ProjectCardItem({ card }: { card: CardProps }) {
@@ -113,13 +76,14 @@ function ProjectCardItem({ card }: { card: CardProps }) {
   return (
     <article className="group border-border/50 bg-background hover:border-border relative flex flex-col overflow-hidden rounded-xl border transition-colors duration-200">
       {/* Thumbnail */}
-      <div className="bg-muted relative aspect-[16/10] overflow-hidden">
+      <div className="bg-muted relative aspect-16/10 overflow-hidden">
         <Image
           src={card.image}
           alt={card.title}
           fill
           className="object-cover transition-transform duration-500 group-hover:scale-[1.04]"
         />
+
         {/* Index badge */}
         <span className="border-border/60 bg-background/90 text-muted-foreground absolute top-3 left-3 rounded-full border px-2.5 py-0.5 text-[10px] font-medium tracking-widest backdrop-blur-sm">
           {num}
@@ -133,6 +97,7 @@ function ProjectCardItem({ card }: { card: CardProps }) {
           <h2 className="text-foreground text-sm leading-snug font-semibold">
             {card.title}
           </h2>
+
           <span className="shrink-0 rounded-full bg-violet-50 px-2.5 py-0.5 text-[10px] font-medium tracking-wide text-violet-700 dark:bg-violet-950/40 dark:text-violet-300">
             {card.tag}
           </span>
@@ -146,9 +111,9 @@ function ProjectCardItem({ card }: { card: CardProps }) {
         {/* Divider */}
         <div className="border-border/50 border-t" />
 
-        {/* Footer: stack + actions */}
+        {/* Footer */}
         <div className="flex items-center justify-between gap-2">
-          {/* Stack pills */}
+          {/* Stack */}
           <div className="flex flex-wrap gap-1.5">
             {card.stack.map((s) => (
               <span
@@ -160,16 +125,19 @@ function ProjectCardItem({ card }: { card: CardProps }) {
             ))}
           </div>
 
-          {/* Action links */}
+          {/* Actions */}
           <div className="flex shrink-0 items-center gap-1.5">
-            <Link
-              href={card.github}
-              target="_blank"
-              className="border-border/60 text-muted-foreground hover:border-border hover:text-foreground flex items-center gap-1 rounded-full border px-2.5 py-1 text-[11px] font-medium transition-colors"
-            >
-              <Github className="h-2.5 w-2.5" />
-              Source
-            </Link>
+            {card.github && (
+              <Link
+                href={card.github}
+                target="_blank"
+                className="border-border/60 text-muted-foreground hover:border-border hover:text-foreground flex items-center gap-1 rounded-full border px-2.5 py-1 text-[11px] font-medium transition-colors"
+              >
+                <Github className="h-2.5 w-2.5" />
+                Source
+              </Link>
+            )}
+
             <Link
               href={card.link}
               target="_blank"
@@ -191,6 +159,7 @@ type ProjectCardProps = {
 
 const ProjectCard = ({ isHomePage = false }: ProjectCardProps) => {
   const router = useRouter();
+
   const displayedCards = isHomePage ? cards.slice(0, 4) : cards;
 
   return (

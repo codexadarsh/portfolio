@@ -5,7 +5,7 @@ import { BsGithub, BsLinkedin } from "react-icons/bs";
 import { IoMdMail } from "react-icons/io";
 
 const primary = {
-  href: "mailto:mauryaadarsh793@gmail.com",
+  href: "mailto:heycodexadarsh@gmail.com",
   label: "Email Me",
   icon: <IoMdMail className="size-4" />,
 };
@@ -47,6 +47,7 @@ const Contact = () => {
         <Button asChild size="sm">
           <Link
             href={primary.href}
+            target="_blank"
             className="flex items-center gap-2 text-sm font-medium"
           >
             {primary.icon}

@@ -1,13 +1,21 @@
 import ProjectCard from "@/components/ProjectCard";
-const page = () => {
+
+const Page = () => {
   return (
-    <section className="max-w-3xl mx-auto flex flex-col border">
-      <h1 className="mt-4 text-xl text-center">Projects</h1>
-      <div className="p-4">
-        <ProjectCard />
+    <section className="mx-auto max-w-3xl border-r border-l px-4 py-10">
+      {/* Header */}
+      <div className="mb-8">
+        <h1 className="text-lg font-semibold tracking-tight">Projects</h1>
+        <p className="text-muted-foreground mt-2 text-sm">
+          A selection of projects focused on performance, usability, and
+          real-world applications.
+        </p>
       </div>
+
+      {/* Content */}
+      <ProjectCard />
     </section>
   );
 };
 
-export default page;
+export default Page;
