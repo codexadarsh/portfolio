@@ -43,31 +43,33 @@ const cards: CardProps[] = [
     description:
       "Pulsex Media Solutions is a comprehensive platform for all your media needs.",
     link: "https://revamped-gopulsex-in.vercel.app/",
-    tag: "SaaS",
+    tag: "Web app",
     stack: ["Next.js", "Tailwind"],
     index: 3,
   },
+
   {
-    image: "/projects/fame.png",
+    image: "/projects/open.png",
+    title: "OpenGPT",
+    description:
+      "Free LLM hub allowing users to access multiple AI models in one lightweight, distraction-free interface.",
+    github: "https://github.com/codexadarsh/opengpt",
+    link: "https://opengpt-rosy.vercel.app/",
+    tag: "AI tool",
+    stack: ["Next.js", "AI SDK"],
+    index: 4,
+  },
+
+  {
+    image: "/projects/fameforge.png",
     title: "Fameforge",
     description:
       "Fameforge is a one-stop platform for all your creative needs.",
     link: "https://fameforge.vercel.app/",
     tag: "SaaS",
     stack: ["Next.js", "Tailwind"],
-    index: 4,
+    index: 5,
   },
-  // {
-  //   image: "/projects/opengpt.png",
-  //   title: "OpenGPT",
-  //   description:
-  //     "Free LLM hub allowing users to access multiple AI models in one lightweight, distraction-free interface.",
-  //   github: "https://github.com/codexadarsh/opengpt",
-  //   link: "https://opengpt-rosy.vercel.app/",
-  //   tag: "AI tool",
-  //   stack: ["Next.js", "AI SDK"],
-  //   index: 5,
-  // },
 ];
 
 function ProjectCardItem({ card }: { card: CardProps }) {
