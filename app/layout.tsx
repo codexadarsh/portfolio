@@ -24,16 +24,6 @@ export const metadata: Metadata = {
 
   description:
     "Full-stack developer building fast, scalable web applications using Next.js, React, and Node.js. Focused on performance, clean systems, and real-world products.",
-
-  openGraph: {
-    title: "Adarsh Maurya",
-    description:
-      "Projects, experience, and work of a full-stack developer focused on performance and scalable systems.",
-    url: "https://codexadarsh.vercel.app", // FIXED
-    siteName: "Adarsh Maurya",
-    locale: "en_US",
-    type: "website",
-  },
 };
 
 export default function RootLayout({
